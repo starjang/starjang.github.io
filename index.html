@@ -200,6 +200,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>轻轻冒个泡，问声大家好！第一次搭建个人站点，竟然这么简单，框架不用写，主题样式不用写，只需要自己动动手就可以，可见分享的力量是多么的强大。之所以创建这个站点除了记录历程，也是想分享一些自己的内容。接下来的日子里，我会慢慢丰富这个小站的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;&#10;    [super viewDidLoad];&#10;    // Do any additional setup after loading the view, typically from a nib.&#10;    &#10;    NSString *str2 = @&#34;http://test.shidaiapps.cn/shidaiApi/mobile/others/getVersion&#34;;&#10;    &#10;    [HttpRequest post:str2 params:nil success:^(id responseObj) &#123;&#10;        NSDictionary *dictData = [NSJSONSerialization JSONObjectWithData:responseObj options:kNilOptions error:nil];&#10;        NSLog(@&#34;===============%@&#34;,dictData);&#10;    &#125; failure:^(NSError *error) &#123;&#10;        NSLog(@&#34;================%@&#34;, error);&#10;    &#125;];&#10;&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
