@@ -1589,7 +1589,7 @@ pre .comment {
 pre .keyword,
 pre .function .keyword,
 pre .class .params {
-  color: #aa0d91;
+  color: #66d9ef;
 }
 pre .tag,
 pre .doctype,
@@ -1615,7 +1615,7 @@ pre .function .title {
 }
 pre .value,
 pre .string {
-  color: #c41a16;
+  color: #e6db74;
 }
 pre .number {
   color: #7163d7;
@@ -1623,6 +1623,61 @@ pre .number {
 pre .id,
 pre .css ~ * .id {
   color: #fd971f;
+}
+pre .comment {
+  color: highlight-comment;
+}
+pre .variable,
+pre .attribute,
+pre .tag,
+pre .regexp,
+pre .ruby .constant,
+pre .xml .tag .title,
+pre .xml .pi,
+pre .xml .doctype,
+pre .html .doctype,
+pre .css .id,
+pre .css .class,
+pre .css .pseudo {
+  color: highlight-red;
+}
+pre .number,
+pre .preprocessor,
+pre .built_in,
+pre .literal,
+pre .params,
+pre .constant {
+  color: highlight-orange;
+}
+pre .ruby .class .title,
+pre .css .rules .attribute {
+  color: highlight-green;
+}
+pre .string,
+pre .value,
+pre .inheritance,
+pre .header,
+pre .ruby .symbol,
+pre .xml .cdata {
+  color: highlight-green;
+}
+pre .title,
+pre .css .hexcolor {
+  color: highlight-aqua;
+}
+pre .function,
+pre .python .decorator,
+pre .python .title,
+pre .ruby .function .title,
+pre .ruby .title .keyword,
+pre .perl .sub,
+pre .javascript .title,
+pre .coffeescript .title {
+  color: highlight-blue;
+}
+pre .keyword,
+pre .javascript .function {
+  color: highlight-purple;
 }
 #footer {
   font-size: 12px;
