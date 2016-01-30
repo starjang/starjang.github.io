@@ -1463,7 +1463,7 @@ a {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #272822;
+  background: #ececec;
   margin: 10px 0;
   padding: 10px 10px;
   overflow: auto;
@@ -1484,13 +1484,13 @@ a {
   border: none;
 }
 .article-entry pre {
-  color: #fff;
+  color: #494949;
 }
 .article-entry pre code {
   background: none;
   text-shadow: none;
   padding: 0;
-  color: #fff;
+  color: #494949;
 }
 .article-entry .highlight {
   -webkit-border-radius: 4px;
@@ -1542,7 +1542,7 @@ a {
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
-  background: #272822;
+  background: #ececec;
   padding: 15px 20px 15px 0;
 }
 .article-entry .gist .gist-file {
@@ -1568,7 +1568,7 @@ a {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #272822;
+  background: #ececec;
   color: highlight-comment;
   font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
@@ -1596,7 +1596,7 @@ pre .doctype,
 pre .params,
 pre .function,
 pre .css .value {
-  color: #fff;
+  color: #494949;
 }
 pre .css ~ * .tag,
 pre .title,
