@@ -14,7 +14,8 @@ ti123456789101112- (void)viewDidLoad &amp;#123;    [super viewDidLoad];    // Do
 <meta property="og:site_name" content="Listen">
 <meta property="og:description" content="轻轻冒个泡，问声大家好！第一次搭建个人站点，竟然这么简单，框架不用写，主题样式不用写，只需要自己动动手就可以，可见分享的力量是多么的强大。之所以创建这个站点除了记录历程，也是想分享一些自己的内容。接下来的日子里，我会慢慢丰富这个小站的。
 ti123456789101112- (void)viewDidLoad &amp;#123;    [super viewDidLoad];    // Do any">
-<meta property="og:updated_time" content="2016-01-30T13:44:00.000Z">
+<meta property="og:image" content="http://starjang.cn/images/default_avatar.jpg">
+<meta property="og:updated_time" content="2016-01-30T13:58:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="轻轻冒个泡">
 <meta name="twitter:description" content="轻轻冒个泡，问声大家好！第一次搭建个人站点，竟然这么简单，框架不用写，主题样式不用写，只需要自己动动手就可以，可见分享的力量是多么的强大。之所以创建这个站点除了记录历程，也是想分享一些自己的内容。接下来的日子里，我会慢慢丰富这个小站的。
@@ -214,6 +215,8 @@ ti123456789101112- (void)viewDidLoad &amp;#123;    [super viewDidLoad];    // Do
       
         <p>轻轻冒个泡，问声大家好！第一次搭建个人站点，竟然这么简单，框架不用写，主题样式不用写，只需要自己动动手就可以，可见分享的力量是多么的强大。之所以创建这个站点除了记录历程，也是想分享一些自己的内容。接下来的日子里，我会慢慢丰富这个小站的。</p>
 <figure class="highlight java"><figcaption><span>ti</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    </span><br><span class="line">    NSString *str2 = @<span class="string">"http://test.shidaiapps.cn/shidaiApi/mobile/others/getVersion"</span>;</span><br><span class="line">    </span><br><span class="line">    [HttpRequest post:str2 params:nil success:^(id responseObj) &#123;</span><br><span class="line">        NSDictionary *dictData = [NSJSONSerialization JSONObjectWithData:responseObj options:kNilOptions error:nil];</span><br><span class="line">        NSLog(@<span class="string">"===============%@"</span>,dictData);</span><br><span class="line">    &#125; failure:^(NSError *error) &#123;</span><br><span class="line">        NSLog(@<span class="string">"================%@"</span>, error);</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<p><img src="http://starjang.cn/images/default_avatar.jpg" alt="image"></p>
+
       
     </div>
     
