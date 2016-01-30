@@ -1461,168 +1461,173 @@ a {
   padding-left: 8px;
   font-size: 12px;
 }
-.article-entry pre,
-.article-entry .highlight {
-  background: #272822;
-  margin: 10px 0;
-  padding: 10px 10px;
+pre,
+.highlight {
+  background: highlight-background;
+  margin: 20px 0;
+  padding: 15px;
   overflow: auto;
-  color: #4c4c4c;
-  line-height: 22.400000000000002px;
+  font-size: $code-font-size;
+  color: highlight-foreground;
+  line-height: $line-height-code-block;
 }
-.article-entry .highlight .gutter pre,
-.article-entry .gist .gist-file .gist-data .line-numbers {
+.highlight .gutter pre,
+.gist .gist-file .gist-data .line-numbers {
   color: #666;
 }
-.article-entry pre,
-.article-entry code {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+pre,
+code {
+  font-family: $code-font-family;
 }
-.article-entry code {
-  background: #eee;
+code {
+  word-break: break-all;
+  background: $gainsboro;
+  text-shadow: 0 1px #fff;
   padding: 0 0.3em;
-  border: none;
 }
-.article-entry pre {
-  color: #fff;
-}
-.article-entry pre code {
+pre code {
   background: none;
   text-shadow: none;
   padding: 0;
-  color: #fff;
 }
-.article-entry .highlight {
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
-.article-entry .highlight pre {
+.highlight pre {
   border: none;
   margin: 0;
-  padding: 0;
+  padding: 1px;
 }
-.article-entry .highlight table {
+.highlight table {
   margin: 0;
   width: auto;
+  border: none;
 }
-.article-entry .highlight td {
+.highlight td {
   border: none;
   padding: 0;
 }
-.article-entry .highlight figcaption {
+.highlight figcaption {
   font-size: 0.85em;
   color: highlight-comment;
   line-height: 1em;
   margin-bottom: 1em;
 }
-.article-entry .highlight figcaption:before,
-.article-entry .highlight figcaption:after {
+.highlight figcaption:before,
+.highlight figcaption:after {
   content: "";
   display: table;
 }
-.article-entry .highlight figcaption:after {
+.highlight figcaption:after {
   clear: both;
 }
-.article-entry .highlight figcaption a {
+.highlight figcaption a {
   float: right;
 }
-.article-entry .highlight .gutter pre {
+.highlight .gutter pre {
   text-align: right;
   padding-right: 20px;
 }
-.article-entry .highlight .gutter pre .line {
-  text-shadow: none;
+.highlight .line {
+  height: 20px;
 }
-.article-entry .highlight .line {
-  font-size: 15px;
-  height: 15px;
-}
-.article-entry .gist {
-  margin: 0 -20px;
+.gist {
+  margin: 20px 0;
   border-style: solid;
-  border-color: #ddd;
+  border-color: $border-color;
   border-width: 1px 0;
-  background: #272822;
-  padding: 15px 20px 15px 0;
+  background: highlight-background;
+  padding: 15px $content-desktop-padding 15px 15px;
 }
-.article-entry .gist .gist-file {
+.gist .gist-file {
   border: none;
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: $font-family-monospace;
   margin: 0;
 }
-.article-entry .gist .gist-file .gist-data {
+.gist .gist-file .gist-data {
   background: none;
   border: none;
 }
-.article-entry .gist .gist-file .gist-data .line-numbers {
+.gist .gist-file .gist-data .line-numbers {
   background: none;
   border: none;
   padding: 0 20px 0 0;
 }
-.article-entry .gist .gist-file .gist-data .line-data {
+.gist .gist-file .gist-data .line-data {
   padding: 0 !important;
 }
-.article-entry .gist .gist-file .highlight {
+.gist .gist-file .highlight {
   margin: 0;
   padding: 0;
   border: none;
 }
-.article-entry .gist .gist-file .gist-meta {
-  background: #272822;
+.gist .gist-file .gist-meta {
+  background: highlight-background;
   color: highlight-comment;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 13px $font-family-base;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
-  margin-left: 20px;
+  margin-left: $content-desktop-padding;
 }
-.article-entry .gist .gist-file .gist-meta a {
+.gist .gist-file .gist-meta a {
   color: #258fb8;
   font-weight: normal;
 }
-.article-entry .gist .gist-file .gist-meta a:hover {
+.gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
 pre .comment {
-  color: #75715e;
+  color: highlight-comment;
+}
+pre .variable,
+pre .attribute,
+pre .tag,
+pre .regexp,
+pre .ruby .constant,
+pre .xml .tag .title,
+pre .xml .pi,
+pre .xml .doctype,
+pre .html .doctype,
+pre .css .id,
+pre .css .class,
+pre .css .pseudo {
+  color: highlight-red;
+}
+pre .number,
+pre .preprocessor,
+pre .built_in,
+pre .literal,
+pre .params,
+pre .constant {
+  color: highlight-orange;
+}
+pre .ruby .class .title,
+pre .css .rules .attribute {
+  color: highlight-green;
+}
+pre .string,
+pre .value,
+pre .inheritance,
+pre .header,
+pre .ruby .symbol,
+pre .xml .cdata {
+  color: highlight-green;
+}
+pre .title,
+pre .css .hexcolor {
+  color: highlight-aqua;
+}
+pre .function,
+pre .python .decorator,
+pre .python .title,
+pre .ruby .function .title,
+pre .ruby .title .keyword,
+pre .perl .sub,
+pre .javascript .title,
+pre .coffeescript .title {
+  color: highlight-blue;
 }
 pre .keyword,
-pre .function .keyword,
-pre .class .params {
-  color: #66d9ef;
-}
-pre .tag,
-pre .doctype,
-pre .params,
-pre .function,
-pre .css .value {
-  color: #fff;
-}
-pre .css ~ * .tag,
-pre .title,
-pre .at_rule,
-pre .at_rule .keyword,
-pre .preprocessor,
-pre .preprocessor .keyword {
-  color: #f92672;
-}
-pre .attribute,
-pre .built_in,
-pre .class,
-pre .css ~ * .class,
-pre .function .title {
-  color: #a6e22e;
-}
-pre .value,
-pre .string {
-  color: #e6db74;
-}
-pre .number {
-  color: #7163d7;
-}
-pre .id,
-pre .css ~ * .id {
-  color: #fd971f;
+pre .javascript .function {
+  color: highlight-purple;
 }
 #footer {
   font-size: 12px;
