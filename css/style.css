@@ -1484,13 +1484,13 @@ a {
   border: none;
 }
 .article-entry pre {
-  color: #aa0d91;
+  color: #fff;
 }
 .article-entry pre code {
   background: none;
   text-shadow: none;
   padding: 0;
-  color: #aa0d91;
+  color: #fff;
 }
 .article-entry .highlight {
   -webkit-border-radius: 4px;
@@ -1589,14 +1589,14 @@ pre .comment {
 pre .keyword,
 pre .function .keyword,
 pre .class .params {
-  color: #66d9ef;
+  color: #aa0d91;
 }
 pre .tag,
 pre .doctype,
 pre .params,
 pre .function,
 pre .css .value {
-  color: #aa0d91;
+  color: #fff;
 }
 pre .css ~ * .tag,
 pre .title,
