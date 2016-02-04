@@ -38,7 +38,7 @@ http是超文本传输协议，信息是明文传输，https则是具有">
 <meta property="og:image" content="http://starjang.cn/images/ssl/QQ20160203-9@2x.png">
 <meta property="og:image" content="http://starjang.cn/images/ssl/QQ20160203-10@2x.png">
 <meta property="og:image" content="http://starjang.cn/images/ssl/QQ20160203-11@2x.png">
-<meta property="og:updated_time" content="2016-02-04T00:52:11.000Z">
+<meta property="og:updated_time" content="2016-02-04T01:00:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTPS双向认证">
 <meta name="twitter:description" content="一、相关说明
@@ -329,7 +329,10 @@ http是超文本传输协议，信息是明文传输，https则是具有">
 <p>​</p>
 </li>
 </ol>
-<h4 id="u56DB_u3001_u4F7F_u7528AFNetworking"><a href="#u56DB_u3001_u4F7F_u7528AFNetworking" class="headerlink" title="四、使用AFNetworking"></a>四、使用AFNetworking</h4><ol>
+<h4 id="u56DB_u3001_u4F7F_u7528AFNetworking"><a href="#u56DB_u3001_u4F7F_u7528AFNetworking" class="headerlink" title="四、使用AFNetworking"></a>四、使用AFNetworking</h4><blockquote>
+<p>客户端证书需要是中级证书或根证书</p>
+</blockquote>
+<ol>
 <li><p>实现配置方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+ (AFSecurityPolicy*)customSecurityPolicy</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 1.获取客户端证书路径</span></span><br><span class="line">    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@<span class="string">"client"</span> ofType:@<span class="string">"cer"</span>];</span><br><span class="line">    NSData *cerData = [NSData dataWithContentsOfFile:cerPath];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2.使用证书验证模式</span></span><br><span class="line">    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.是否允许无效证书（即自建的证书）, 默认为NO</span></span><br><span class="line">    securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4.是否需要验证域名，默认为YES</span></span><br><span class="line">    securityPolicy.validatesDomainName = YES;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5.设置证书</span></span><br><span class="line">    securityPolicy.pinnedCertificates = [NSSet setWithObject:cerData];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> securityPolicy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
