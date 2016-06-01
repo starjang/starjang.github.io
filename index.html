@@ -177,7 +177,7 @@
   
     <div class="article-meta">
       <a href="/2016/06/01/第三方登录Tokens时效/" class="article-date">
-  	<time datetime="2016-06-01T08:35:09.000Z" itemprop="datePublished">2016-06-01</time>
+  	<time datetime="2016-06-01T08:36:47.000Z" itemprop="datePublished">2016-06-01</time>
 </a>
     </div>
   
@@ -188,7 +188,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="u7B2C_u4E09_u65B9_u767B_u5F55Tokens_u65F6_u6548_28_u56FD_u5916_29"><a href="#u7B2C_u4E09_u65B9_u767B_u5F55Tokens_u65F6_u6548_28_u56FD_u5916_29" class="headerlink" title="第三方登录Tokens时效(国外)"></a>第三方登录Tokens时效(国外)</h3><h4 id="u4E00_u3001Facebook_u767B_u5F55"><a href="#u4E00_u3001Facebook_u767B_u5F55" class="headerlink" title="一、Facebook登录"></a>一、Facebook登录</h4><ol>
+        <h3 id="u7B2C_u4E09_u65B9_u767B_u5F55Tokens_u65F6_u6548_28_u56FD_u5916_29"><a href="#u7B2C_u4E09_u65B9_u767B_u5F55Tokens_u65F6_u6548_28_u56FD_u5916_29" class="headerlink" title="第三方登录Tokens时效(国外)"></a><strong>第三方登录Tokens时效(国外)</strong></h3><h4 id="Facebook_u767B_u5F55"><a href="#Facebook_u767B_u5F55" class="headerlink" title="Facebook登录"></a><strong>Facebook登录</strong></h4><ol>
 <li>Facebook SDK的Tokens有效期是60天。Tokens失效的原因有三种：(1)授权时间超过了60天。(2) 用户授权应用后，修改了账号密码。(3)用户在Account Setting界面的App中删除了授权的应用。</li>
 <li>使用<code>+ (FBSDKAccessToken *)currentAccessToken;</code>方法检测Tokens是否可用。如果可用，使用<code>- (instancetype)initWithGraphPath:</code>方法直接获取用户信息。如果不可用，需要<code>- (void)logInWithReadPermissions:</code>方法重新授权后，获取用户信息。</li>
 <li>当前Tokens未失效的情况下，可通过<code>+ (void)refreshCurrentAccessToken:</code>方法，可更新许可状态和延长Token过期时间。</li>
