@@ -28,7 +28,8 @@
 使用Braintree的条件
 公司必须在Braintree服务地
 必须有所在服务地的公司银行账号">
-<meta property="og:updated_time" content="2016-01-30T15:24:28.000Z">
+<meta property="og:image" content="https://developers.braintreepayments.com/img/developers/diagram-overview.png">
+<meta property="og:updated_time" content="2016-06-01T08:20:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Braintree集成指南">
 <meta name="twitter:description" content="为什么使用Braintree
@@ -260,6 +261,58 @@
 <li>PayPal和Braintree关联后，PayPal账号可以更换，但是会丢失对应PayPal的客户数据，因为Braintree里的数据是从PayPal里导入的。</li>
 <li>用户使用Visa、万事达卡支付，2天之内到账，美国运通4天之内，PayPal支付通常在24h之内(保守)。</li>
 </ul>
+<h3 id="u5DE5_u4F5C_u539F_u7406"><a href="#u5DE5_u4F5C_u539F_u7406" class="headerlink" title="工作原理"></a><strong>工作原理</strong></h3><p><img src="https://developers.braintreepayments.com/img/developers/diagram-overview.png" alt="image"></p>
+<ol>
+<li>客户端向自身服务器发送<code>token</code>请求来初始化客户端SDK。</li>
+<li>服务器收到请求后，生成<code>token</code>返回给客户端SDK。</li>
+<li>一旦客户端SDK被初始化，并且客户已提交支付信息，客户端SDK会向Braintree发送消息，Braintree会返回给客户端SDK一串随机数。</li>
+<li>客户端SDK将随机数发给自身服务器。</li>
+<li>自身服务器将收到的随机数通过服务器SKD去创建交易。</li>
+</ol>
+<h3 id="u670D_u52A1_u5668_u7AEF"><a href="#u670D_u52A1_u5668_u7AEF" class="headerlink" title="服务器端"></a>服务器端</h3><ol>
+<li><p><a href="https://developers.braintreepayments.com/client_libraries/java/braintree-java-2.55.0.jar" target="_blank" rel="external">下载Java library</a></p>
+</li>
+<li><p>修改<code>pom.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>com.braintreepayments.gateway<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>braintree-java<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">version</span>&gt;</span>2.55.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境和API凭证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> BraintreeGateway gateway = <span class="keyword">new</span> BraintreeGateway(</span><br><span class="line">  Environment.SANDBOX,</span><br><span class="line">  <span class="string">"your_merchant_id"</span>,</span><br><span class="line">  <span class="string">"your_public_key"</span>,</span><br><span class="line">  <span class="string">"your_private_key"</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册沙盒账号</p>
+</li>
+</ol>
+<ol>
+<li><p>生成<code>token</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post(<span class="keyword">new</span> Route(<span class="string">"/client_token"</span>) &#123;</span><br><span class="line">  <span class="annotation">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">handle</span><span class="params">(Request request, Response response)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gateway.clientToken().generate();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接收客户端付款随机数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">post(<span class="keyword">new</span> Route(<span class="string">"/checkout"</span>) &#123;</span><br><span class="line">  <span class="annotation">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">handle</span><span class="params">(Request request, Response response)</span> </span>&#123;</span><br><span class="line">    String nonce = request.queryParams(<span class="string">"payment_method_nonce"</span>);</span><br><span class="line">    <span class="comment">// Use payment method nonce here</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建交易</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TransactionRequest request = <span class="keyword">new</span> TransactionRequest()</span><br><span class="line">    .amount(<span class="keyword">new</span> BigDecimal(<span class="string">"100.00"</span>))</span><br><span class="line">    .paymentMethodNonce(nonceFromTheClient)</span><br><span class="line">    .options()</span><br><span class="line">      .submitForSettlement(<span class="keyword">true</span>)</span><br><span class="line">      .done();</span><br><span class="line"></span><br><span class="line">Result&lt;Transaction&gt; result = gateway.transaction().sale(request);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://developers.braintreepayments.com/reference/response/transaction/java#result-object" target="_blank" rel="external">返回交易结果</a></p>
+</li>
+<li><p>交易相关接口</p>
+<p><a href="https://developers.braintreepayments.com/reference/request/transaction/sale/java" target="_blank" rel="external">Transaction.sale()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/void" target="_blank" rel="external">Transaction.void()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/submit-for-settlement" target="_blank" rel="external">Transaction.submitForSettlement()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/refund" target="_blank" rel="external">Transaction.refund()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/clone-transaction" target="_blank" rel="external">Transaction.cloneTransaction()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/find" target="_blank" rel="external">Transaction.find()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/search" target="_blank" rel="external">Transaction.search()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/hold-in-escrow" target="_blank" rel="external">Transaction.holdInEscrow()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/release-from-escrow" target="_blank" rel="external">Transaction.releaseFromEscrow()</a><br><a href="https://developers.braintreepayments.com/reference/request/transaction/cancel-release" target="_blank" rel="external">Transaction.cancelRelease()</a></p>
+</li>
+</ol>
+<h3 id="iOS_u7AEF_u914D_u7F6E"><a href="#iOS_u7AEF_u914D_u7F6E" class="headerlink" title="iOS端配置"></a><strong>iOS端配置</strong></h3><ol>
+<li><p><a href="https://github.com/braintree/braintree_ios#getting-started" target="_blank" rel="external">Braintree SDK下载</a></p>
+</li>
+<li><p>适配 iOS 9</p>
+<p>在<code>Info.plist</code>中添加<code>LSApplicationQueriesSchemes</code>字典，并添加<code>com.paypal.ppclient.touch.v1</code>, <code>com.paypal.ppclient.touch.v2</code>,<code>org-appextension-feature-password-management</code>, 如果集成了venmo需要添加<code>com.venmo.touch.v2</code>。</p>
+</li>
+<li><p>向自身服务器请求<code>token</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@implementation ViewController&#10;&#10;- (void)viewDidLoad &#123;&#10;    [super viewDidLoad];&#10;&#10;    // TODO: Switch this URL to your own authenticated API&#10;    NSURL *clientTokenURL = [NSURL URLWithString:@&#34;https://braintree-sample-merchant.herokuapp.com/client_token&#34;];&#10;    NSMutableURLRequest *clientTokenRequest = [NSMutableURLRequest requestWithURL:clientTokenURL];&#10;    [clientTokenRequest setValue:@&#34;text/plain&#34; forHTTPHeaderField:@&#34;Accept&#34;];&#10;&#10;    [[[NSURLSession sharedSession] dataTaskWithRequest:clientTokenRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;&#10;        // TODO: Handle errors&#10;        NSString *clientToken = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];&#10;&#10;        self.braintreeClient = [[BTAPIClient alloc] initWithAuthorization:clientToken];&#10;        // As an example, you may wish to present our Drop-in UI at this point.&#10;        // Continue to the next section to learn more...&#10;    &#125;] resume];&#10;&#125;&#10;&#10;@end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向自身服务器发送交易随机数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)dropInViewController:(BTDropInViewController *)viewController&#10;  didSucceedWithTokenization:(BTPaymentMethodNonce *)paymentMethodNonce &#123;&#10;    // Send payment method nonce to your server for processing&#10;    [self postNonceToServer:paymentMethodNonce.nonce];&#10;    [self dismissViewControllerAnimated:YES completion:nil];&#10;&#125;&#10;&#10;- (void)dropInViewControllerDidCancel:(__unused BTDropInViewController *)viewController &#123;&#10;    [self dismissViewControllerAnimated:YES completion:nil];&#10;&#125;&#10;&#10;- (void)postNonceToServer:(NSString *)paymentMethodNonce &#123;&#10;    // Update URL with your server&#10;    NSURL *paymentURL = [NSURL URLWithString:@&#34;https://your-server.example.com/checkout&#34;];&#10;    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:paymentURL];&#10;    request.HTTPBody = [[NSString stringWithFormat:@&#34;payment_method_nonce=%@&#34;, paymentMethodNonce] dataUsingEncoding:NSUTF8StringEncoding];&#10;    request.HTTPMethod = @&#34;POST&#34;;&#10;&#10;    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;&#10;        // TODO: Handle success and failure&#10;    &#125;] resume];&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自身服务器通过客户端传来的交易随机数创建交易闭环</p>
+</li>
+</ol>
+<h3 id="u53C2_u8003_u6587_u6863"><a href="#u53C2_u8003_u6587_u6863" class="headerlink" title="参考文档"></a><strong>参考文档</strong></h3><p><a href="https://developers.braintreepayments.com/guides/overview" target="_blank" rel="external">Braintree官方文档</a></p>
 
       
     </div>
