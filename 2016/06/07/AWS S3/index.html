@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Amazon S3 | Listen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简述S3Amazon S3 是 Internet 数据的存储库。Amazon S3 提供了可靠、快速和廉价的数据存储基础设施。它的目的是通过支持您随时从 Amazon EC2 内部或从网络上的任何地方存储和检索任何数量的数据来简化整个网络计算。Amazon S3 以冗余方式跨多个设施在多个设备上存储数据元，允许多个不同的客户端或应用程序线程同时对这些数据元进行读或写操作。您可以使用存储在 Amaz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Amazon S3">
+<meta property="og:url" content="http://starjang.github.io/2016/06/07/AWS S3/index.html">
+<meta property="og:site_name" content="Listen">
+<meta property="og:description" content="简述S3Amazon S3 是 Internet 数据的存储库。Amazon S3 提供了可靠、快速和廉价的数据存储基础设施。它的目的是通过支持您随时从 Amazon EC2 内部或从网络上的任何地方存储和检索任何数量的数据来简化整个网络计算。Amazon S3 以冗余方式跨多个设施在多个设备上存储数据元，允许多个不同的客户端或应用程序线程同时对这些数据元进行读或写操作。您可以使用存储在 Amaz">
+<meta property="og:updated_time" content="2016-06-07T08:15:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Amazon S3">
+<meta name="twitter:description" content="简述S3Amazon S3 是 Internet 数据的存储库。Amazon S3 提供了可靠、快速和廉价的数据存储基础设施。它的目的是通过支持您随时从 Amazon EC2 内部或从网络上的任何地方存储和检索任何数量的数据来简化整个网络计算。Amazon S3 以冗余方式跨多个设施在多个设备上存储数据元，允许多个不同的客户端或应用程序线程同时对这些数据元进行读或写操作。您可以使用存储在 Amaz">
+  
+    <link rel="alternative" href="/atom.xml" title="Listen" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Listen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/Braintree/" style="font-size: 10px;">Braintree</a> <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Flurry-Analytics/" style="font-size: 10px;">Flurry Analytics</a> <a href="/tags/Google/" style="font-size: 15px;">Google</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/S3/" style="font-size: 10px;">S3</a> <a href="/tags/Twitter/" style="font-size: 10px;">Twitter</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/云存储/" style="font-size: 10px;">云存储</a> <a href="/tags/亚马逊/" style="font-size: 10px;">亚马逊</a> <a href="/tags/双向认证/" style="font-size: 10px;">双向认证</a> <a href="/tags/境外支付/" style="font-size: 10px;">境外支付</a> <a href="/tags/应用统计/" style="font-size: 10px;">应用统计</a> <a href="/tags/第三方登录/" style="font-size: 10px;">第三方登录</a> <a href="/tags/自签证书/" style="font-size: 10px;">自签证书</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">现职iOS软件开发，对科技充满兴趣。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Listen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Listen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-AWS S3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/07/AWS S3/" class="article-date">
+  	<time datetime="2016-06-07T07:50:50.000Z" itemprop="datePublished">2016-06-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Amazon S3
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/S3/">S3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/云存储/">云存储</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/亚马逊/">亚马逊</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u7B80_u8FF0S3"><a href="#u7B80_u8FF0S3" class="headerlink" title="简述S3"></a>简述S3</h2><p>Amazon S3 是 Internet 数据的存储库。Amazon S3 提供了可靠、快速和廉价的数据存储基础设施。它的目的是通过支持您随时从 Amazon EC2 内部或从网络上的任何地方存储和检索任何数量的数据来简化整个网络计算。Amazon S3 以冗余方式跨多个设施在多个设备上存储数据元，允许多个不同的客户端或应用程序线程同时对这些数据元进行读或写操作。您可以使用存储在 Amazon S3 中的冗余数据快速、可靠地恢复实例或应用程序故障。有关更多信息，请参阅 <a href="http://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/AmazonS3.html" target="_blank" rel="external">Amazon Simple Storage Service (Amazon S3)</a>。  </p>
+<a id="more"></a>
+<p><br></p>
+<h2 id="u4F7F_u7528S3"><a href="#u4F7F_u7528S3" class="headerlink" title="使用S3"></a>使用S3</h2><ol>
+<li><p>注册亚马逊账号，在控制中心开通S3，并创建存储桶，创建对象。具体创建流程，参阅<a href="http://docs.aws.amazon.com/zh_cn/AmazonS3/latest/dev/MakingRequests.html" target="_blank" rel="external">Amazon S3</a>。</p>
+</li>
+<li><p>到GitHub<a href="https://github.com/awslabs/aws-sdk-ios-samples" target="_blank" rel="external">下载官方SDK</a>。</p>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u5BA2_u6237_u7AEF_u6388_u6743"><a href="#u5BA2_u6237_u7AEF_u6388_u6743" class="headerlink" title="客户端授权"></a>客户端授权</h2><ol>
+<li><p>通过方法<code>initWithRegionType:identityPoolId:</code>创建授权凭证。</p>
+<ul>
+<li><code>regionType</code>：S3服务区，同S3控制中心服务区一致。</li>
+<li><code>identityPoolId</code>：Cognito管理端的唯一标识池。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;AWSCore.h&#34;&#10;&#10;AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1 identityPoolId:identityPoolId];</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>创建默认服务配置，完成授权。</p>
+<ul>
+<li><code>region</code>：S3服务区，同第一步中的服务区一致。</li>
+<li><code>credentialsProvider</code>：授权凭证。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];&#10;&#10;AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>通过一二步骤即可获取以下临时凭证。</p>
+<ul>
+<li><code>accessKey</code> ：授权Key</li>
+<li><code>secretKey</code>：密钥</li>
+<li><code>sessionKey</code>：令牌</li>
+<li><code>expiration</code>：失效时间</li>
+</ul>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u670D_u52A1_u5668_u6388_u6743"><a href="#u670D_u52A1_u5668_u6388_u6743" class="headerlink" title="服务器授权"></a>服务器授权</h2><blockquote>
+<p>由于官方SDK的接口中均为客户端生成临时凭证，而我们的项目中有时需要通过服务器端来产生临时凭证，客户端直接使用凭证，这样官方给出的接口都不能直接使用。因为官方获取授权的接口均继承<code>AWSCredentialsProvider</code>协议，所以当我们已有凭证，也只需要继承这个协议。具体方法如下。</p>
+</blockquote>
+<ol>
+<li><p>新建类<code>AWSCustomCredentialsProvider</code>，并继承<code>AWSCredentialsProvider</code>协议。<code>.h</code>中代码如下。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;AWSCredentialsProvider.h&#34;&#10;&#10;/**&#10; *  &#33258;&#23450;&#20041;&#26041;&#27861;&#20020;&#26102;&#25480;&#26435;&#26041;&#27861;&#10; */&#10;@interface AWSCustomCredentialProvider : NSObject &#60;AWSCredentialsProvider&#62;&#10;&#10;/**&#10; *  &#25480;&#26435;key&#10; */&#10;@property (nonatomic, strong, readonly) NSString *accessKey;&#10;&#10;/**&#10; *  &#25480;&#26435;&#23494;&#38053;&#10; */&#10;@property (nonatomic, strong, readonly) NSString *secretKey;&#10;&#10;/**&#10; *  &#20196;&#29260;&#10; */&#10;@property (nonatomic, strong, readonly) NSString *sessionKey;&#10;&#10;/**&#10; *  &#22833;&#25928;&#26102;&#38388;&#10; */&#10;@property (nonatomic, strong, readonly) NSDate *expiration;&#10;&#10;/**&#10; *  &#21021;&#22987;&#21270;&#25480;&#26435;&#10; *&#10; *  @param accessKey  &#25480;&#26435;key&#10; *  @param secretKey  &#25480;&#26435;&#23494;&#38053;&#10; *  @param sessionKey &#20196;&#29260;&#10; *  @param expiration &#22833;&#25928;&#26102;&#38388;&#10; *&#10; *  @return &#25480;&#26435;&#20973;&#35777;&#10; */&#10;- (instancetype)initWithAccessKey:(NSString *)accessKey&#10;                        secretKey:(NSString *)secretKey&#10;                       sessionKey:(NSString *)sessionKey&#10;                       expiration:(NSDate *)expiration;&#10;&#10;@end</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>在<code>.m</code>中进行初始化操作。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;AWSCustomCredentialsProvider.h&#34;&#10;&#10;@interface AWSCustomCredentialProvider()&#10;&#10;@end&#10;&#10;@implementation AWSCustomCredentialProvider&#10;&#10;- (instancetype)initWithAccessKey:(NSString *)accessKey secretKey:(NSString *)secretKey sessionKey:(NSString*)sessionKey expiration:(NSDate *)expiration&#10;&#123;&#10;    if (self = [super init]) &#123;&#10;        _accessKey = accessKey;&#10;        _secretKey = secretKey;&#10;        _sessionKey = sessionKey;&#10;        _expiration = expiration;&#10;    &#125;&#10;    return self;&#10;&#125;&#10;&#10;@end</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>获取服务器返回的临时凭证<code>accessKey</code> 、<code>secretKey</code>、<code>sessionKey</code>、<code>expiration</code>后，构建凭证。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSCustomCredentialProvider *credentialsProvider = [[AWSCustomCredentialProvider alloc] initWithAccessKey:accessKey secretKey:secretKey sessionKey:sessionKey expiration:expiration];</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>同客户端获取完凭证一样，进行服务配置。</p>
+<ul>
+<li><code>region</code>：S3服务区。</li>
+<li><code>credentialsProvider</code>：授权凭证。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:otherOSSLoginResponse.s3Region credentialsProvider:credentialsProvider];&#10;            AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><br></p>
+<h2 id="u6587_u4EF6_u4E0A_u4F20"><a href="#u6587_u4EF6_u4E0A_u4F20" class="headerlink" title="文件上传"></a>文件上传</h2><ol>
+<li><p>构建凭证，配置服务完成后，进行文件上传。首先进行上传请求。</p>
+<ul>
+<li><code>body</code>：上传文件的路径。通过<code>stringByAppendingPathComponent:</code>获取文件路径。</li>
+<li><code>key</code>：桶名后的文件路径。例如：<a href="https://s3.amazonaws.com/little-star/avatar/hello.jpg。https://s3.amazonaws.com/为服务端的URL，little-star为桶名，avatar为桶里的文件名，hello.jpg为图片名，这里的`key`为&quot;avatar/hello.jpg&quot;。" target="_blank" rel="external">https://s3.amazonaws.com/little-star/avatar/hello.jpg。https://s3.amazonaws.com/为服务端的URL，little-star为桶名，avatar为桶里的文件名，hello.jpg为图片名，这里的`key`为&quot;avatar/hello.jpg&quot;。</a></li>
+<li><code>bucket</code>：桶名。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];&#10;uploadRequest.body = [NSURL fileURLWithPath:filePath];&#10;uploadRequest.key = [NSString stringWithFormat:@&#34;%@/%@.jpg&#34;,folder, imgName];&#10;uploadRequest.bucket = buckName;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行文件上传。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)upload:(AWSS3TransferManagerUploadRequest *)uploadRequest &#123;&#10;  &#10;    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];&#10;    &#10;    [[transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) &#123;&#10;        if (task.error) &#123;&#10;          &#10;          // &#19978;&#20256;&#22833;&#36133;&#25805;&#20316;&#10;          &#10;        &#125; else &#123; &#10;          &#10;          // &#19978;&#20256;&#25104;&#21151;&#25805;&#20316; &#10;        &#125;&#10;        return nil;&#10;    &#125;];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u6587_u4EF6_u4E0B_u8F7D"><a href="#u6587_u4EF6_u4E0B_u8F7D" class="headerlink" title="文件下载"></a>文件下载</h2><ol>
+<li><p>下载请求。</p>
+<ul>
+<li><code>downloadingFileURL</code>：存放文件的路径。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSS3TransferManagerDownloadRequest *downloadRequest = [AWSS3TransferManagerDownloadRequest new];&#10;downloadRequest.bucket = bucket;&#10;downloadRequest.key = key;&#10;downloadRequest.downloadingFileURL = downloadingFileURL;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>进行下载。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)download:(AWSS3TransferManagerDownloadRequest *)downloadRequest &#123;&#10;    switch (downloadRequest.state) &#123;&#10;        case AWSS3TransferManagerRequestStateNotStarted:&#10;        case AWSS3TransferManagerRequestStatePaused:&#10;        &#123;&#10;            AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];&#10;            [[transferManager download:downloadRequest] continueWithBlock:^id(AWSTask *task) &#123;&#10;                if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]&#10;                    &#38;&#38; task.error.code == AWSS3TransferManagerErrorPaused) &#123;&#10;                    NSLog(@&#34;&#26242;&#20572;&#19979;&#36733;&#34;);&#10;                &#125; else if (task.error) &#123;&#10;                    NSLog(@&#34;&#19979;&#36733;&#22833;&#36133;: [%@]&#34;, task.error);&#10;                &#125; else &#123;&#10;&#9;&#9;&#9;&#9;&#9;NSLog(@&#34;&#19979;&#36733;&#25104;&#21151;&#34;);&#10;                &#125;&#10;                return nil;&#10;            &#125;];&#10;        &#125;&#10;            break;&#10;        default:&#10;            break;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/01/Flurry Analytics集成文档/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flurry Analytics 集成</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="AWS S3" data-title="Amazon S3" data-url="http://starjang.github.io/2016/06/07/AWS S3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"starjang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Listen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
