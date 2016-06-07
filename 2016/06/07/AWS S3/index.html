@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://starjang.github.io/2016/06/07/AWS S3/index.html">
 <meta property="og:site_name" content="Listen">
 <meta property="og:description" content="简述S3Amazon S3 是 Internet 数据的存储库。Amazon S3 提供了可靠、快速和廉价的数据存储基础设施。它的目的是通过支持您随时从 Amazon EC2 内部或从网络上的任何地方存储和检索任何数量的数据来简化整个网络计算。Amazon S3 以冗余方式跨多个设施在多个设备上存储数据元，允许多个不同的客户端或应用程序线程同时对这些数据元进行读或写操作。您可以使用存储在 Amaz">
-<meta property="og:updated_time" content="2016-06-07T08:15:09.000Z">
+<meta property="og:updated_time" content="2016-06-07T10:18:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Amazon S3">
 <meta name="twitter:description" content="简述S3Amazon S3 是 Internet 数据的存储库。Amazon S3 提供了可靠、快速和廉价的数据存储基础设施。它的目的是通过支持您随时从 Amazon EC2 内部或从网络上的任何地方存储和检索任何数量的数据来简化整个网络计算。Amazon S3 以冗余方式跨多个设施在多个设备上存储数据元，允许多个不同的客户端或应用程序线程同时对这些数据元进行读或写操作。您可以使用存储在 Amaz">
@@ -219,7 +219,18 @@
 <p><br></p>
 </li>
 </ol>
-<h2 id="u5BA2_u6237_u7AEF_u6388_u6743"><a href="#u5BA2_u6237_u7AEF_u6388_u6743" class="headerlink" title="客户端授权"></a>客户端授权</h2><ol>
+<h2 id="u4ECE_u5BA2_u6237_u7AEFSDK_u6388_u6743"><a href="#u4ECE_u5BA2_u6237_u7AEFSDK_u6388_u6743" class="headerlink" title="从客户端SDK授权"></a>从客户端SDK授权</h2><ol>
+<li><p>配置Cognito管理端。</p>
+<ul>
+<li>进入亚马逊<code>控制中心</code>在<code>服务</code>中选择<code>Cognito</code>。</li>
+<li>选择创建新标识池<code>Create new identity pool</code>。</li>
+<li>填写<code>Identity pool name</code>，勾选<code>Enable access to unauthenticated identities</code>，点击<code>创建</code>进入<code>角色</code>创建页面，点击<code>允许</code>完成创建。</li>
+</ul>
+</li>
+<li><p>进入<code>IAM</code>，选择<code>角色</code>，点击创建池时创建的授权角色，进行<code>策略编辑</code>，修改如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;    &#34;Version&#34;: &#34;2012-10-17&#34;,&#10;    &#34;Statement&#34;: [&#10;        &#123;&#10;            &#34;Effect&#34;: &#34;Allow&#34;,&#10;            &#34;Action&#34;: [&#10;                &#34;mobileanalytics:PutEvents&#34;,&#10;                &#34;cognito-sync:*&#34;,&#10;                &#34;cognito-identity:*&#34;,&#10;                &#34;s3:*&#34;&#10;            ],&#10;            &#34;Resource&#34;: [&#10;                &#34;*&#34;&#10;            ]&#10;        &#125;&#10;    ]&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
 <li><p>通过方法<code>initWithRegionType:identityPoolId:</code>创建授权凭证。</p>
 <ul>
 <li><code>regionType</code>：S3服务区，同S3控制中心服务区一致。</li>
@@ -233,20 +244,20 @@
 <li><code>region</code>：S3服务区，同第一步中的服务区一致。</li>
 <li><code>credentialsProvider</code>：授权凭证。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];&#10;&#10;AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];&#10;&#10;AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;</span><br></pre></td></tr></table></figure>
 <p>​</p>
 </li>
-<li><p>通过一二步骤即可获取以下临时凭证。</p>
+<li><p>通过二三步骤即可获取以下临时凭证。</p>
 <ul>
 <li><code>accessKey</code> ：授权Key</li>
 <li><code>secretKey</code>：密钥</li>
 <li><code>sessionKey</code>：令牌</li>
 <li><code>expiration</code>：失效时间</li>
 </ul>
-<p><br></p>
 </li>
 </ol>
-<h2 id="u670D_u52A1_u5668_u6388_u6743"><a href="#u670D_u52A1_u5668_u6388_u6743" class="headerlink" title="服务器授权"></a>服务器授权</h2><blockquote>
+<p><br></p>
+<h2 id="u4ECE_u81EA_u8EAB_u670D_u52A1_u5668_u6388_u6743"><a href="#u4ECE_u81EA_u8EAB_u670D_u52A1_u5668_u6388_u6743" class="headerlink" title="从自身服务器授权"></a>从自身服务器授权</h2><blockquote>
 <p>由于官方SDK的接口中均为客户端生成临时凭证，而我们的项目中有时需要通过服务器端来产生临时凭证，客户端直接使用凭证，这样官方给出的接口都不能直接使用。因为官方获取授权的接口均继承<code>AWSCredentialsProvider</code>协议，所以当我们已有凭证，也只需要继承这个协议。具体方法如下。</p>
 </blockquote>
 <ol>
@@ -271,7 +282,7 @@
 </li>
 </ol>
 <p><br></p>
-<h2 id="u6587_u4EF6_u4E0A_u4F20"><a href="#u6587_u4EF6_u4E0A_u4F20" class="headerlink" title="文件上传"></a>文件上传</h2><ol>
+<h2 id="u8FDB_u884C_u6587_u4EF6_u4E0A_u4F20"><a href="#u8FDB_u884C_u6587_u4EF6_u4E0A_u4F20" class="headerlink" title="进行文件上传"></a>进行文件上传</h2><ol>
 <li><p>构建凭证，配置服务完成后，进行文件上传。首先进行上传请求。</p>
 <ul>
 <li><code>body</code>：上传文件的路径。通过<code>stringByAppendingPathComponent:</code>获取文件路径。</li>
@@ -285,7 +296,7 @@
 <p><br></p>
 </li>
 </ol>
-<h2 id="u6587_u4EF6_u4E0B_u8F7D"><a href="#u6587_u4EF6_u4E0B_u8F7D" class="headerlink" title="文件下载"></a>文件下载</h2><ol>
+<h2 id="u8FDB_u884C_u6587_u4EF6_u4E0B_u8F7D"><a href="#u8FDB_u884C_u6587_u4EF6_u4E0B_u8F7D" class="headerlink" title="进行文件下载"></a>进行文件下载</h2><ol>
 <li><p>下载请求。</p>
 <ul>
 <li><code>downloadingFileURL</code>：存放文件的路径。</li>
