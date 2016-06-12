@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Listen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Firebase Notifications(推送通知)
+title: Google Firebase Notifications(推送通知)date: 2016-06-7 17:05:00
+tags: [Google, Notification, 推送通知]简介Google Firebase Notifications 是一项免费为安卓和iOS开发者提供消息推送的服务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Listen">
+<meta property="og:url" content="http://starjang.github.io/2016/06/12/Firebase Notifications(推送通知)/index.html">
+<meta property="og:site_name" content="Listen">
+<meta property="og:description" content="Firebase Notifications(推送通知)
+title: Google Firebase Notifications(推送通知)date: 2016-06-7 17:05:00
+tags: [Google, Notification, 推送通知]简介Google Firebase Notifications 是一项免费为安卓和iOS开发者提供消息推送的服务。">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Art/token_generation_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Art/token_trust_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Art/aps_binary_provider_2_2x.png">
+<meta property="og:updated_time" content="2016-06-12T13:53:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Listen">
+<meta name="twitter:description" content="Firebase Notifications(推送通知)
+title: Google Firebase Notifications(推送通知)date: 2016-06-7 17:05:00
+tags: [Google, Notification, 推送通知]简介Google Firebase Notifications 是一项免费为安卓和iOS开发者提供消息推送的服务。">
+  
+    <link rel="alternative" href="/atom.xml" title="Listen" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Listen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/Braintree/" style="font-size: 10px;">Braintree</a> <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Firebase/" style="font-size: 10px;">Firebase</a> <a href="/tags/Flurry-Analytics/" style="font-size: 10px;">Flurry Analytics</a> <a href="/tags/Google/" style="font-size: 16.67px;">Google</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/S3/" style="font-size: 10px;">S3</a> <a href="/tags/Twitter/" style="font-size: 10px;">Twitter</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/云存储/" style="font-size: 10px;">云存储</a> <a href="/tags/亚马逊/" style="font-size: 10px;">亚马逊</a> <a href="/tags/双向认证/" style="font-size: 10px;">双向认证</a> <a href="/tags/境外支付/" style="font-size: 10px;">境外支付</a> <a href="/tags/应用统计/" style="font-size: 10px;">应用统计</a> <a href="/tags/第三方登录/" style="font-size: 10px;">第三方登录</a> <a href="/tags/统计/" style="font-size: 10px;">统计</a> <a href="/tags/自签证书/" style="font-size: 10px;">自签证书</a> <a href="/tags/随笔/" style="font-size: 13.33px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">现职iOS软件开发，对科技充满兴趣。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Listen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Listen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Firebase Notifications(推送通知)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/12/Firebase Notifications(推送通知)/" class="article-date">
+  	<time datetime="2016-06-12T13:53:28.000Z" itemprop="datePublished">2016-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Firebase_Notifications_28_u63A8_u9001_u901A_u77E5_29"><a href="#Firebase_Notifications_28_u63A8_u9001_u901A_u77E5_29" class="headerlink" title="Firebase Notifications(推送通知)"></a>Firebase Notifications(推送通知)</h1><hr>
+<p>title: Google Firebase Notifications(推送通知)<br>date: 2016-06-7 17:05:00</p>
+<h2 id="tags_3A__5BGoogle_2C_Notification_2C__u63A8_u9001_u901A_u77E5_5D"><a href="#tags_3A__5BGoogle_2C_Notification_2C__u63A8_u9001_u901A_u77E5_5D" class="headerlink" title="tags: [Google, Notification, 推送通知]"></a>tags: [Google, Notification, 推送通知]</h2><h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>Google Firebase Notifications 是一项免费为安卓和iOS开发者提供消息推送的服务。</p>
+  <a id="more"></a>
+<p><br></p>
+<h2 id="u914D_u7F6E_u8BC1_u4E66"><a href="#u914D_u7F6E_u8BC1_u4E66" class="headerlink" title="配置证书"></a>配置证书</h2><ol>
+<li>打开Mac上的<code>钥匙串</code>，在<code>我的证书</code>一栏，将已安装好的与项目<code>Bundle Id</code>一致的<code>Production iOS Push Services</code>和<code>Development iOS Push Services</code>证书密钥导出，文件类型选为<code>p.12</code>类型，添加密码并保存。</li>
+</ol>
+<ol>
+<li>进入<a href="https://console.firebase.google.com/project/project-7586055240392275378/settings/cloudmessaging" target="_blank" rel="external">Firebase控制中心</a>，点击<code>项目设置</code>下的<code>云消息传递</code>，将导出的证书上传。</li>
+</ol>
+<p><br></p>
+<h2 id="u6574_u5408iOS_u5BA2_u6237_u7AEFSDK"><a href="#u6574_u5408iOS_u5BA2_u6237_u7AEFSDK" class="headerlink" title="整合iOS客户端SDK"></a>整合iOS客户端SDK</h2><ol>
+<li><p>由于FCM SDK依赖Firebase Analytics中的部分类库，所以要先整合Firebase Analytics SDK(见：Firebase Analytics文档)。</p>
+</li>
+<li><p>从GitHub下载<a href="https://dl.google.com/firebase/sdk/ios/3_2_1/Firebase.zip" target="_blank" rel="external">FCM SDK</a>，并将SDK中的<code>Messaging</code>文件加入到项目。</p>
+</li>
+<li><p>在<code>AppDelegate.h</code>中<code>-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:</code>方法里，添加代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import &lt;FirebaseMessaging/FirebaseMessaging.h&gt;</span></span><br><span class="line"><span class="preprocessor">#import &lt;FirebaseInstanceID/FirebaseInstanceID.h&gt;</span></span><br><span class="line"><span class="preprocessor">#import &lt;FirebaseAnalytics/FIRApp.h&gt;</span></span><br><span class="line"></span><br><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line"></span><br><span class="line">  	<span class="comment">// 注册远程通知</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">floor</span>(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1) &#123;</span><br><span class="line">        <span class="comment">// iOS 7.1 或之前版本</span></span><br><span class="line">        UIRemoteNotificationType allNotificationTypes =</span><br><span class="line">        (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);</span><br><span class="line">        [application registerForRemoteNotificationTypes:allNotificationTypes];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// iOS 8 或之后版本</span></span><br><span class="line">        UIUserNotificationType allNotificationTypes =</span><br><span class="line">        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);</span><br><span class="line">        UIUserNotificationSettings *settings =</span><br><span class="line">        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];</span><br><span class="line">        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];</span><br><span class="line">        [[UIApplication sharedApplication] registerForRemoteNotifications];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">// 配置firebase</span></span><br><span class="line">    [FIRApp configure];</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">// 将tokenRefreshNotification:添加为观察者。</span></span><br><span class="line">    [[NSNotificationCenter defaultCenter] addObserver:self</span><br><span class="line">     selector:@selector(tokenRefreshNotification:)  </span><br><span class="line">     name:kFIRInstanceIDTokenRefreshNotification object:nil];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>AppDelegate.h</code>中，<code>- (void)application:(UIApplication *)application didReceiveRemoteNotification:</code>方法里实现消息的接收。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo</span><br><span class="line">fetchCompletionHandler:(<span class="keyword">void</span> (^)(UIBackgroundFetchResult))completionHandler &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理接收到的数据</span></span><br><span class="line">    NSLog(@<span class="string">"%@"</span>, userInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接收到的消息格式如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	aps =     &#123;</span><br><span class="line">    alert = <span class="string">"Content"</span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="string">"gcm.message_id"</span> = <span class="string">"0:1465377566640320%1a4092a11a4092a1"</span>;</span><br><span class="line">	<span class="string">"gcm.n.e"</span> = <span class="number">1</span>;</span><br><span class="line">	<span class="string">"google.c.a.c_id"</span> = <span class="number">7852169416146864066</span>;</span><br><span class="line">	<span class="string">"google.c.a.c_l"</span> = <span class="string">"tags"</span>;</span><br><span class="line">	<span class="string">"google.c.a.e"</span> = <span class="number">1</span>;</span><br><span class="line">	<span class="string">"google.c.a.ts"</span> = <span class="number">1465377565</span>;</span><br><span class="line">	<span class="string">"google.c.a.udt"</span> = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>在<code>AppDelegate.h</code>中，添加访问令牌方法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)tokenRefreshNotification:(NSNotification *)notification &#123;</span><br><span class="line">  </span><br><span class="line">    NSString *refreshedToken = [[FIRInstanceID instanceID] token];</span><br><span class="line">    NSLog(@<span class="string">"InstanceID token: %@"</span>, refreshedToken);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 已有Token，在联网失败情况下，尝试连接FCM。</span></span><br><span class="line">    [self connectToFcm];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)connectToFcm &#123;</span><br><span class="line">    [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (error != nil) &#123;</span><br><span class="line">            NSLog(@<span class="string">"Unable to connect to FCM. %@"</span>, error);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            NSLog(@<span class="string">"Connected to FCM."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>在<code>AppDelegate.h</code>中，<code>- (void)applicationDidBecomeActive:</code>方法里连接FCM。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationDidBecomeActive:(UIApplication *)application &#123;</span><br><span class="line">    [self connectToFcm];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>在<code>AppDelegate.h</code>中，<code>- (void)applicationDidEnterBackground:</code>方法里断开连接。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)applicationDidEnterBackground:(UIApplication *)application &#123;</span><br><span class="line">    [[FIRMessaging messaging] disconnect];</span><br><span class="line">    NSLog(@<span class="string">"Disconnected from FCM"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u81EA_u5B9A_u4E49_u5B9E_u73B0_u63A8_u9001-iOS_u7AEF"><a href="#u81EA_u5B9A_u4E49_u5B9E_u73B0_u63A8_u9001-iOS_u7AEF" class="headerlink" title="自定义实现推送-iOS端"></a>自定义实现推送-iOS端</h2><ol>
+<li><p>在<code>AppDelegate.m</code>中加入以下两个代理方法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken &#123; </span><br><span class="line">    NSString *token = [NSString stringWithFormat:@<span class="string">"%@"</span>, deviceToken];</span><br><span class="line">    <span class="comment">// 获取终端设备标识，这个标识需要通过接口发送到服务器端，服务器端推送消息到APNS时需要知道终端的标识，APNS通过注册的终端标识找到终端设备。</span></span><br><span class="line">    NSLog(@<span class="string">"My token is:%@"</span>, token);   </span><br><span class="line">&#125;  </span><br><span class="line">- (<span class="keyword">void</span>)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error &#123;   </span><br><span class="line">    NSString *error_str = [NSString stringWithFormat: @<span class="string">"%@"</span>, error];   </span><br><span class="line">    NSLog(@<span class="string">"Failed to get token, error:%@"</span>, error_str);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>在<code>AppDelegate.m</code>的<code>-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:</code>方法中加入注册消息通知推送能力；加入当应用程序处于未启动状态时，判断是否由远程消息通知触发；加入清除消息推送通知标记。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//判断是否由远程消息通知触发应用程序启动</span></span><br><span class="line">    <span class="keyword">if</span> ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]!=nil) &#123;</span><br><span class="line">        <span class="comment">//获取应用程序消息通知标记数（即小红圈中的数字）</span></span><br><span class="line">        <span class="keyword">int</span> badge = [UIApplication sharedApplication].applicationIconBadgeNumber;</span><br><span class="line">        <span class="keyword">if</span> (badge&gt;<span class="number">0</span>) &#123;</span><br><span class="line">           <span class="comment">//如果应用程序消息通知标记数（即小红圈中的数字）大于0，清除标记。</span></span><br><span class="line">            badge--;</span><br><span class="line">          <span class="comment">//清除标记。清除小红圈中数字，小红圈中数字为0，小红圈才会消除。</span></span><br><span class="line">            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//消息推送注册</span></span><br><span class="line">    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>AppDelegate.m</code>中加入消息接收处理代理方法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)application:(UIApplication *)application </span><br><span class="line">didReceiveRemoteNotification:(NSDictionary *)userInfo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//在此处理接收到的消息。</span></span><br><span class="line">    NSLog(@<span class="string">"Receive remote notification : %@"</span>,userInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u81EA_u5B9A_u4E49_u5B9E_u73B0_u63A8_u9001-_u670D_u52A1_u7AEF"><a href="#u81EA_u5B9A_u4E49_u5B9E_u73B0_u63A8_u9001-_u670D_u52A1_u7AEF" class="headerlink" title="自定义实现推送-服务端"></a>自定义实现推送-服务端</h2><ol>
+<li><p>服务端代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;  </span><br><span class="line"><span class="keyword">import</span> java.util.List;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> javapns.devices.Device;  </span><br><span class="line"><span class="keyword">import</span> javapns.devices.implementations.basic.BasicDevice;  </span><br><span class="line"><span class="keyword">import</span> javapns.notification.AppleNotificationServerBasicImpl;  </span><br><span class="line"><span class="keyword">import</span> javapns.notification.PushNotificationManager;  </span><br><span class="line"><span class="keyword">import</span> javapns.notification.PushNotificationPayload;  </span><br><span class="line"><span class="keyword">import</span> javapns.notification.PushedNotification;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> org.apache.commons.logging.Log;  </span><br><span class="line"><span class="keyword">import</span> org.apache.commons.logging.LogFactory;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainSend</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Log log = LogFactory.getLog(MainSend.class.getName());  </span><br><span class="line">      </span><br><span class="line">     <span class="comment">/************************************************ </span><br><span class="line">     测试推送服务器地址：gateway.sandbox.push.apple.com /2195  </span><br><span class="line">     产品推送服务器地址：gateway.push.apple.com / 2195  </span><br><span class="line"> </span><br><span class="line">    需要javaPNS_2.2.jar包 </span><br><span class="line"> </span><br><span class="line">     ***************************************************/</span>  </span><br><span class="line">    <span class="comment">/**  </span><br><span class="line"> </span><br><span class="line">     * apple的推送方法 </span><br><span class="line"> </span><br><span class="line">     * <span class="doctag">@param</span> tokens   iphone手机获取的token </span><br><span class="line"> </span><br><span class="line">     * <span class="doctag">@param</span> path 这里是一个.p12格式的文件路径，需要去apple官网申请一个  </span><br><span class="line"> </span><br><span class="line">     * <span class="doctag">@param</span> password  p12的密码 此处注意导出的证书密码不能为空因为空密码会报错 </span><br><span class="line"> </span><br><span class="line">     * <span class="doctag">@param</span> message 推送消息的内容 </span><br><span class="line"> </span><br><span class="line">     * <span class="doctag">@param</span> count 应用图标上小红圈上的数值 </span><br><span class="line"> </span><br><span class="line">     * <span class="doctag">@param</span> sendCount 单发还是群发  true：单发 false：群发 </span><br><span class="line"> </span><br><span class="line">     */</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendpush</span><span class="params">(List&lt;String&gt; tokens,String path, String password, String message,Integer count,<span class="keyword">boolean</span> sendCount)</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">try</span> &#123;  </span><br><span class="line">        <span class="comment">// message是一个json的字符串&#123;"aps":&#123;"alert":"推送测试"&#125;&#125;  </span></span><br><span class="line">  </span><br><span class="line">            PushNotificationPayload payLoad =  PushNotificationPayload.fromJSON(message);  </span><br><span class="line">              </span><br><span class="line">            payLoad.addAlert(<span class="string">"消息内容"</span>); <span class="comment">// 消息内容  </span></span><br><span class="line">              </span><br><span class="line">            payLoad.addBadge(count); <span class="comment">// iphone应用图标上小红圈上的数值  </span></span><br><span class="line">              </span><br><span class="line">            payLoad.addSound(<span class="string">"default"</span>); <span class="comment">// 铃音 默认  </span></span><br><span class="line">              </span><br><span class="line">            PushNotificationManager pushManager = <span class="keyword">new</span> PushNotificationManager();  </span><br><span class="line">              </span><br><span class="line">            <span class="comment">// true：表示的是产品发布推送服务 false：表示的是产品测试推送服务</span></span><br><span class="line">            pushManager.initializeConnection(<span class="keyword">new</span> AppleNotificationServerBasicImpl(path, password, <span class="keyword">false</span>));  </span><br><span class="line">              </span><br><span class="line">            List&lt;PushedNotification&gt; notifications = <span class="keyword">new</span> ArrayList&lt;PushedNotification&gt;();   </span><br><span class="line">              </span><br><span class="line">            <span class="comment">// 发送push消息  </span></span><br><span class="line">            <span class="keyword">if</span> (sendCount) &#123;  </span><br><span class="line">              </span><br><span class="line">            log.debug(<span class="string">"----------apple 推送 单个-------"</span>);  </span><br><span class="line">              </span><br><span class="line">            Device device = <span class="keyword">new</span> BasicDevice();  </span><br><span class="line">              </span><br><span class="line">            device.setToken(tokens.get(<span class="number">0</span>));  </span><br><span class="line">              </span><br><span class="line">            PushedNotification notification = pushManager.sendNotification(device, payLoad, <span class="keyword">true</span>);  </span><br><span class="line">              </span><br><span class="line">            notifications.add(notification);  </span><br><span class="line">              </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">              </span><br><span class="line">            log.debug(<span class="string">"---------apple 推送 群-------"</span>);  </span><br><span class="line">              </span><br><span class="line">            List&lt;Device&gt; device = <span class="keyword">new</span> ArrayList&lt;Device&gt;();  </span><br><span class="line">              </span><br><span class="line">            <span class="keyword">for</span> (String token : tokens) &#123;  </span><br><span class="line">              </span><br><span class="line">            device.add(<span class="keyword">new</span> BasicDevice(token));  </span><br><span class="line">              </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">            notifications = pushManager.sendNotifications(payLoad, device);  </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">            List&lt;PushedNotification&gt; failedNotifications = PushedNotification.findFailedNotifications(notifications);  </span><br><span class="line">              </span><br><span class="line">            List&lt;PushedNotification&gt; successfulNotifications = PushedNotification.findSuccessfulNotifications(notifications);  </span><br><span class="line">              </span><br><span class="line">            <span class="keyword">int</span> failed = failedNotifications.size();  </span><br><span class="line">              </span><br><span class="line">            <span class="keyword">int</span> successful = successfulNotifications.size();  </span><br><span class="line">              </span><br><span class="line">            <span class="keyword">if</span> (successful &gt; <span class="number">0</span> &amp;&amp; failed == <span class="number">0</span>) &#123;  </span><br><span class="line">              </span><br><span class="line">            log.debug(<span class="string">"-----All notifications pushed 成功 ("</span> + successfulNotifications.size() + <span class="string">"):"</span>);  </span><br><span class="line">              </span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (successful == <span class="number">0</span> &amp;&amp; failed &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">              </span><br><span class="line">            log.debug(<span class="string">"-----All notifications 失败 ("</span> + failedNotifications.size() + <span class="string">"):"</span>);  </span><br><span class="line">              </span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (successful == <span class="number">0</span> &amp;&amp; failed == <span class="number">0</span>) &#123;  </span><br><span class="line">              </span><br><span class="line">            System.out.println(<span class="string">"No notifications could be sent, probably because of a critical error"</span>);  </span><br><span class="line">              </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">              </span><br><span class="line">            log.debug(<span class="string">"------Some notifications 失败 ("</span> + failedNotifications.size() + <span class="string">"):"</span>);  </span><br><span class="line">              </span><br><span class="line">            log.debug(<span class="string">"------Others 成功 ("</span> + successfulNotifications.size() + <span class="string">"):"</span>);  </span><br><span class="line">              </span><br><span class="line">            &#125;  </span><br><span class="line">    	<span class="comment">// 停止连接APNS</span></span><br><span class="line">   		pushManager.stopConnection();  </span><br><span class="line">  </span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">      </span><br><span class="line">    e.printStackTrace();  </span><br><span class="line">      </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u9644_u5F55"><a href="#u9644_u5F55" class="headerlink" title="附录"></a>附录</h2><ol>
+<li><p>设备注册APNs的流程图。</p>
+<p>​</p>
+<p><img src="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Art/token_generation_2x.png" alt=""></p>
+<ul>
+<li>Device连接APNs服务器并携带设备序列号。</li>
+<li>连接成功，APNs经过打包和处理产生device_token并返回给注册的Device。</li>
+<li>Device携带获取的device_token向我们自己的应用服务器注册。</li>
+<li>完成需要被推送的Device在APNs服务器和我们自己的应用服务器注册。</li>
+</ul>
+<p>​</p>
+</li>
+<li><p>消息推送过程。</p>
+<p>​</p>
+<p><img src="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Art/token_trust_2x.png" alt=""></p>
+<ul>
+<li>首先，安装了具有推送功能的应用，我们的设备在有网络的情况下会连接苹果推送服务器，连接过程中，APNs会验证device_token，连接成功后维持一个长连接。</li>
+<li>Provider(我们自己的服务器)收到需要被推送的消息并结合被推送设备的device_token一起打包发送给APNS服务器。</li>
+<li>APNs服务器将推送信息推送给指定device_token的设备。</li>
+<li>设备收到推送消息后通知我们的应用程序并显示和提示用户。</li>
+</ul>
+</li>
+<li><p>APNs信息包结构体。</p>
+<p><img src="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Art/aps_binary_provider_2_2x.png" alt=""></p>
+<p>上图这个消息体就是我们的服务器（Provider）发送给APNS服务器的消息结构，APNS验证这个结构正确并提取其中的信息后，再将消息推送到指定的设备。这个结构体包括七个部分。</p>
+<ul>
+<li>第一部分是命令标示符。</li>
+<li>第二部分是通知的唯一ID。</li>
+<li>第三部分是有效时间。</li>
+<li>第四个部分是我们的device_token的长度。</li>
+<li>第五部分是我们的device_token字符串。</li>
+<li>第六部分是推送Payload(消息体)的长度。</li>
+<li>最后一部分是真正的消息内容，里面包含了推送消息的基本信息，比如消息内容，应用Icon右上角显示多少数字以及推送消息到达时所播放的声音等。Payload（消息体）的结构如下：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"aps"</span> : &#123;</span><br><span class="line">	<span class="string">"alert"</span> : <span class="string">"You got your emails."</span>,</span><br><span class="line">	<span class="string">"badge"</span> : <span class="number">1</span>,</span><br><span class="line">	<span class="string">"sound"</span> : <span class="string">"default"</span></span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<p>​</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/12/Cloud Message(云消息)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/07/AWS S3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Amazon S3</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Firebase Notifications(推送通知)" data-title="" data-url="http://starjang.github.io/2016/06/12/Firebase Notifications(推送通知)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"starjang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Listen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
