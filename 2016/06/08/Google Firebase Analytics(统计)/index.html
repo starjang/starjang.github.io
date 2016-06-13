@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Google Firebase Analytics(统计) | Listen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简述Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。">
+  <meta name="description" content="简介Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Firebase Analytics(统计)">
 <meta property="og:url" content="http://starjang.github.io/2016/06/08/Google Firebase Analytics(统计)/index.html">
 <meta property="og:site_name" content="Listen">
-<meta property="og:description" content="简述Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。">
+<meta property="og:description" content="简介Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。">
 <meta property="og:image" content="https://www.gstatic.com/mobilesdk/160426_mobilesdk/images/xcode_project_panel@2x.png">
-<meta property="og:updated_time" content="2016-06-12T14:00:42.000Z">
+<meta property="og:updated_time" content="2016-06-13T08:57:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Firebase Analytics(统计)">
-<meta name="twitter:description" content="简述Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。">
+<meta name="twitter:description" content="简介Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。">
   
     <link rel="alternative" href="/atom.xml" title="Listen" type="application/atom+xml">
   
@@ -210,7 +210,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="u7B80_u8FF0"><a href="#u7B80_u8FF0" class="headerlink" title="简述"></a>简述</h2><p>Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。</p>
+        <h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>Google Firebase Analytics是移动应用统计分析平台，提供移动应用统计和分析流量来源、内容使用、用户属性和行为数据。</p>
  <a id="more"></a>
 <p><br></p>
 <h2 id="u6574_u5408SDK"><a href="#u6574_u5408SDK" class="headerlink" title="整合SDK"></a>整合SDK</h2><ol>
@@ -229,14 +229,14 @@
 <p><br></p>
 <h2 id="u4F7F_u7528SDK"><a href="#u4F7F_u7528SDK" class="headerlink" title="使用SDK"></a>使用SDK</h2><ol>
 <li><p>在<code>AppDelegate.m</code>中添加代码如下。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;Firebase.h&#34;&#10;&#10;@implementation AppDelegate&#10;&#10;- (BOOL)application:(UIApplication *)application&#10;    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;&#10;  // &#21021;&#22987;&#21270;Firebase&#37197;&#32622;&#10;  [FIRApp configure];&#10;  return YES;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="string">"Firebase.h"</span></span></span><br><span class="line"></span><br><span class="line">@implementation AppDelegate</span><br><span class="line"></span><br><span class="line">- (BOOL)application:(UIApplication *)application</span><br><span class="line">    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">  <span class="comment">// 初始化Firebase配置</span></span><br><span class="line">  [FIRApp configure];</span><br><span class="line">  <span class="keyword">return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>自定义事件统计。</p>
 <ul>
 <li><code>name</code>：事件名称。</li>
 <li><code>parameters</code>：自定义参数字典。</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;FirebaseAnalytics.h&#34;&#10;FirebaseAnalytics [FIRAnalytics logEventWithName:kFIREventSelectContent parameters:@&#123;&#10;  kFIRParameterContentType:@&#34;cont&#34;,&#10;  kFIRParameterItemID:@&#34;1&#34; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="string">"FirebaseAnalytics.h"</span></span></span><br><span class="line">[FIRAnalytics logEventWithName:kFIREventSelectContent parameters:@&#123;</span><br><span class="line">  kFIRParameterContentType:@<span class="string">"cont"</span>,</span><br><span class="line">  kFIRParameterItemID:@<span class="string">"1"</span>                                                        &#125;];</span><br></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 <li><p>记录用户属性(User property)。</p>
@@ -245,7 +245,7 @@
 <p>注：年龄，性别和兴趣属性自动收集只有当你的应用程序链接到 <a href="https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/AdSupport_Framework/index.html" target="_blank" rel="external">广告支持的框架</a>。受众特征和兴趣数据来源于针对 Android 设备的广告 ID 和针对 iOS 设备的 IDFA。Firebase SDK 不会收集受众特征和兴趣数据。某些地区对兴趣的范围进行了限制。</p>
 </blockquote>
 <p>手动记录用户属性如下。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#25163;&#21160;&#35760;&#24405;&#29992;&#25143;&#23646;&#24615;&#10;[FIRAnalytics setUserPropertyString:userName forName:@&#34;Taylor Swift&#34;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 手动记录用户属性</span></span><br><span class="line">[FIRAnalytics setUserPropertyString:userName forName:@<span class="string">"Taylor Swift"</span>];</span><br></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ol>

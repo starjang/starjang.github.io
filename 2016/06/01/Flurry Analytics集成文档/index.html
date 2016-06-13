@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://starjang.github.io/2016/06/01/Flurry Analytics集成文档/index.html">
 <meta property="og:site_name" content="Listen">
 <meta property="og:description" content="作为移动应用统计分析领域里的标杆平台，Flurry拥有非常全面的功能，并不仅仅限于数据统计、分析功能，还提供App Circle广告、推广平台功能。可以说Flurry是目前最全面的移动应用统计分析产品，除了统计单个应用内的各类数据指标外，还可以提供跨应用之间的 转化统计等针对企业级用户的功能。单纯从移动应用的数据统计功能来看，Flurry也处于领先位置。其功能模块设置合理，分析维度全面，分析流程易">
-<meta property="og:updated_time" content="2016-06-06T06:07:50.000Z">
+<meta property="og:updated_time" content="2016-06-13T08:59:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flurry Analytics 集成">
 <meta name="twitter:description" content="作为移动应用统计分析领域里的标杆平台，Flurry拥有非常全面的功能，并不仅仅限于数据统计、分析功能，还提供App Circle广告、推广平台功能。可以说Flurry是目前最全面的移动应用统计分析产品，除了统计单个应用内的各类数据指标外，还可以提供跨应用之间的 转化统计等针对企业级用户的功能。单纯从移动应用的数据统计功能来看，Flurry也处于领先位置。其功能模块设置合理，分析维度全面，分析流程易">
@@ -217,7 +217,7 @@
 </ol>
 <h2 id="u6574_u5408_Flurry_Analytics__28_u5206_u6790_29"><a href="#u6574_u5408_Flurry_Analytics__28_u5206_u6790_29" class="headerlink" title="整合 Flurry Analytics (分析)"></a>整合 Flurry Analytics (分析)</h2><ol>
 <li><p>在<code>AppDelegate.m</code>中，如下添加代码即可实现集成。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> #import &#34;Flurry.h&#34;&#10;- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;&#10;&#9;// &#21152;&#20837;&#24212;&#29992;API_KEY&#10;  &#9;[Flurry startSession:@&#34;YOUR_API_KEY&#34;];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="preprocessor">#import <span class="string">"Flurry.h"</span></span></span><br><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">	<span class="comment">// 加入应用API_KEY</span></span><br><span class="line">  	[Flurry startSession:@<span class="string">"YOUR_API_KEY"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 <li><p>添加完后，SDK 会存取以下所列的功能。<a href="https://developer.yahoo.com/flurry/docs/overview/" target="_blank" rel="external">点此</a>查看每个功能的详细的描述。</p>
@@ -251,19 +251,19 @@
 </ol>
 <h2 id="Flurry_Analytics__u81EA_u5B9A_u4E49_u4E8B_u4EF6"><a href="#Flurry_Analytics__u81EA_u5B9A_u4E49_u4E8B_u4EF6" class="headerlink" title="Flurry Analytics 自定义事件"></a>Flurry Analytics 自定义事件</h2><ol>
 <li><p>记录自定义事件。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry logEvent:@&#34;Article_Read&#34;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry logEvent:@<span class="string">"Article_Read"</span>];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：每个应用可追踪300个不同的事件。</p>
 </blockquote>
 </li>
 <li><p>记录包含自定义参数的事件。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#29992;&#25143;&#33258;&#23450;&#20041;&#21442;&#25968;&#10;NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:&#10;  @&#34;John Q&#34;, @&#34;Author&#34;,             &#10;  @&#34;Registered&#34;, @&#34;User_Status&#34;,    &#10;  nil];&#10;// &#20351;&#29992;&#33258;&#23450;&#20041;&#21442;&#25968;&#10;[Flurry logEvent:@&#34;Article_Read&#34; withParameters:articleParams];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户自定义参数</span></span><br><span class="line">NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:</span><br><span class="line">  @<span class="string">"John Q"</span>, @<span class="string">"Author"</span>,             </span><br><span class="line">  @<span class="string">"Registered"</span>, @<span class="string">"User_Status"</span>,    </span><br><span class="line">  nil];</span><br><span class="line"><span class="comment">// 使用自定义参数</span></span><br><span class="line">[Flurry logEvent:@<span class="string">"Article_Read"</span> withParameters:articleParams];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：每个事件最多可具备10个参数。</p>
 </blockquote>
 </li>
 <li><p>追踪事件持续时间。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#29992;&#25143;&#33258;&#23450;&#20041;&#21442;&#25968;&#10;NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:&#10;      @&#34;John Q&#34;, @&#34;Author&#34;,             &#10;      @&#34;Registered&#34;, @&#34;User_Status&#34;,    &#10;      nil];&#10;&#10;// &#24320;&#22987;&#35760;&#24405;&#20107;&#20214;&#26102;&#38388;&#10;[Flurry logEvent:@&#34;Article_Read&#34; withParameters:articleParams timed:YES];&#10;&#10;// &#25429;&#33719;&#32467;&#26463;&#26102;&#38388;&#10;[Flurry endTimedEvent:@&#34;Article_Read&#34; withParameters:nil];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户自定义参数</span></span><br><span class="line">NSDictionary *articleParams = [NSDictionary dictionaryWithObjectsAndKeys:</span><br><span class="line">      @<span class="string">"John Q"</span>, @<span class="string">"Author"</span>,             </span><br><span class="line">      @<span class="string">"Registered"</span>, @<span class="string">"User_Status"</span>,    </span><br><span class="line">      nil];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始记录事件时间</span></span><br><span class="line">[Flurry logEvent:@<span class="string">"Article_Read"</span> withParameters:articleParams timed:YES];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 捕获结束时间</span></span><br><span class="line">[Flurry endTimedEvent:@<span class="string">"Article_Read"</span> withParameters:nil];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Flurry 会根据使用时间 (Session) 和用戶，自动记录使用时间，并提供<strong>平均</strong>事件长度的整体指标。</p>
 </blockquote>
@@ -272,47 +272,47 @@
 <p>​    </p>
 <h2 id="Flurry_Analytics__28_u5206_u6790_29__u8FDB_u9636_u529F_u80FD"><a href="#Flurry_Analytics__28_u5206_u6790_29__u8FDB_u9636_u529F_u80FD" class="headerlink" title="Flurry Analytics (分析) 进阶功能"></a>Flurry Analytics (分析) 进阶功能</h2><ol>
 <li><p>获取用户的地理位置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#24320;&#21551;&#20301;&#32622;&#31649;&#29702;&#26381;&#21153;&#10;CLLocationManager *locationManager = [[CLLocationManager alloc] init];&#10;[locationManager startUpdatingLocation];&#10;&#10;// &#20351;&#29992;Flurry&#35774;&#23450;&#20301;&#32622;&#10;CLLocation *location = locationManager.location;&#10;[Flurry setLatitude:location.coordinate.latitude&#10;        longitude:location.coordinate.longitude&#10;        horizontalAccuracy:location.horizontalAccuracy&#10;        verticalAccuracy:location.verticalAccuracy];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开启位置管理服务</span></span><br><span class="line">CLLocationManager *locationManager = [[CLLocationManager alloc] init];</span><br><span class="line">[locationManager startUpdatingLocation];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用Flurry设定位置</span></span><br><span class="line">CLLocation *location = locationManager.location;</span><br><span class="line">[Flurry setLatitude:location.coordinate.latitude</span><br><span class="line">        longitude:location.coordinate.longitude</span><br><span class="line">        horizontalAccuracy:location.horizontalAccuracy</span><br><span class="line">        verticalAccuracy:location.verticalAccuracy];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Flurry 只会保留最后的位置信息。</p>
 </blockquote>
 </li>
 <li><p>追踪年龄和性别。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setAge:21];&#10;[Flurry setGender:@&#34;m&#34;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setAge:<span class="number">21</span>];</span><br><span class="line">[Flurry setGender:@<span class="string">"m"</span>];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>有效年龄0或以上。</p>
 </blockquote>
 </li>
 <li><p>追踪用户ID。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setUserID:@&#34;USER_ID&#34;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setUserID:@<span class="string">"USER_ID"</span>];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>警告：根据Flurry的服务条款，不可获取设备的唯一识别码。</p>
 </blockquote>
 </li>
 <li><p>追踪应用错误。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry logError:@&#34;ERROR_NAME&#34; message:@&#34;ERROR_MESSAGE&#34; exception:e];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry logError:@<span class="string">"ERROR_NAME"</span> message:@<span class="string">"ERROR_MESSAGE"</span> exception:e];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Flurry 会报告每个使用时间 (Session) 内发生的前 10 次错误。</p>
 </blockquote>
 </li>
 <li><p>追踪页面浏览次数。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#33258;&#21160;&#35760;&#24405;&#10;[Flurry logAllPageViews:navigationController];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自动记录</span></span><br><span class="line">[Flurry logAllPageViews:navigationController];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如要启动Flurry Agent来自动侦测并记录页面浏览，需传递UINavigationController或UITabBarController的实例到countPageViews。Flurry Agent会建立物件委派以侦测用户互动。每个侦测到的用户互动都会自动记录为一次页面浏览。只需要将每个实例传递至Flurry Agent一次即可。多个UINavigationController或UITabBarController实例皆可以传递至Flurry Agent。</p>
 </blockquote>
 <p>​</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#25163;&#21160;&#35760;&#24405;&#10;[Flurry logPageView];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 手动记录</span></span><br><span class="line">[Flurry logPageView];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>在UINavigationController或UITabBarController存在之下，可以手动侦测用户互动。<br>注意：页面浏览次数与自定义事件不同。</p>
 </blockquote>
 </li>
 <li><p>设定数据传送至Flurry的时机。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setSessionReportsOnCloseEnabled:(BOOL)sendSessionReportsOnClose];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setSessionReportsOnCloseEnabled:(BOOL)sendSessionReportsOnClose];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>默认开启。启用此选项之后，Flurry 会试图在用戶退出应用与启动应用时传送使用时间 (Session) 数据。</p>
 </blockquote>
 <p>​</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setSessionReportsOnPauseEnabled:(BOOL)sendSessionReportsOnPause];</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Flurry setSessionReportsOnPauseEnabled:(BOOL)sendSessionReportsOnPause];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>默认开启。开启此选项之后，Flurry 会试图在用戶暂停应用与启动应用时传送使用时间 (Session) 数据。</p>
 <p>Flurry 会在用户暂停应用与启动应用时通过 SSL 传送使用时间 (Session) 数据。</p>
