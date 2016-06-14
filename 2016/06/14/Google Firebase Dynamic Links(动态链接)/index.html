@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Google Firebase Dynamic Links(动态链接) | Listen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介Firebase Dynamic Links 是一种跨平台的，动态改变链接行为的智能链接。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Firebase Dynamic Links(动态链接)">
+<meta property="og:url" content="http://starjang.github.io/2016/06/14/Google Firebase Dynamic Links(动态链接)/index.html">
+<meta property="og:site_name" content="Listen">
+<meta property="og:description" content="简介Firebase Dynamic Links 是一种跨平台的，动态改变链接行为的智能链接。">
+<meta property="og:updated_time" content="2016-06-14T08:59:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google Firebase Dynamic Links(动态链接)">
+<meta name="twitter:description" content="简介Firebase Dynamic Links 是一种跨平台的，动态改变链接行为的智能链接。">
+  
+    <link rel="alternative" href="/atom.xml" title="Listen" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Listen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/Braintree/" style="font-size: 10px;">Braintree</a> <a href="/tags/Cloud-Message/" style="font-size: 10px;">Cloud Message</a> <a href="/tags/Dynamic-Links/" style="font-size: 10px;">Dynamic Links</a> <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Firebase/" style="font-size: 15px;">Firebase</a> <a href="/tags/Flurry-Analytics/" style="font-size: 10px;">Flurry Analytics</a> <a href="/tags/Google/" style="font-size: 17.5px;">Google</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/S3/" style="font-size: 10px;">S3</a> <a href="/tags/Twitter/" style="font-size: 10px;">Twitter</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/云存储/" style="font-size: 10px;">云存储</a> <a href="/tags/云消息/" style="font-size: 10px;">云消息</a> <a href="/tags/亚马逊/" style="font-size: 10px;">亚马逊</a> <a href="/tags/动态链接/" style="font-size: 10px;">动态链接</a> <a href="/tags/双向认证/" style="font-size: 10px;">双向认证</a> <a href="/tags/境外支付/" style="font-size: 10px;">境外支付</a> <a href="/tags/应用统计/" style="font-size: 10px;">应用统计</a> <a href="/tags/推送通知/" style="font-size: 10px;">推送通知</a> <a href="/tags/第三方登录/" style="font-size: 10px;">第三方登录</a> <a href="/tags/统计/" style="font-size: 10px;">统计</a> <a href="/tags/自签证书/" style="font-size: 10px;">自签证书</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">现职iOS软件开发，对科技充满兴趣。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Listen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Listen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Google Firebase Dynamic Links(动态链接)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/14/Google Firebase Dynamic Links(动态链接)/" class="article-date">
+  	<time datetime="2016-06-14T09:00:09.000Z" itemprop="datePublished">2016-06-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Google Firebase Dynamic Links(动态链接)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Links/">Dynamic Links</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Firebase/">Firebase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google/">Google</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态链接/">动态链接</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>Firebase Dynamic Links 是一种跨平台的，动态改变链接行为的智能链接。</p>
+ <a id="more"></a>
+<p><br></p>
+<h2 id="u914D_u7F6E_u670D_u52A1"><a href="#u914D_u7F6E_u670D_u52A1" class="headerlink" title="配置服务"></a>配置服务</h2><ol>
+<li><p>进入<a href="https://console.firebase.google.com/project/project-7586055240392275378/settings/cloudmessaging" target="_blank" rel="external">Firebase控制中心</a> &gt; 设置 &gt; 项目设置 &gt; 常规。将<code>App Store ID</code>和<code>Team ID</code>填写完整。</p>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u5728Firebase_u63A7_u5236_u4E2D_u5FC3_u521B_u5EFA_u52A8_u6001_u94FE_u63A5"><a href="#u5728Firebase_u63A7_u5236_u4E2D_u5FC3_u521B_u5EFA_u52A8_u6001_u94FE_u63A5" class="headerlink" title="在Firebase控制中心创建动态链接"></a>在Firebase控制中心创建动态链接</h2><ol>
+<li><p>在Firebase控制中心，选中动态链接一栏。</p>
+</li>
+<li><p>点击新的动态链接，并确保生成的动态链接被选中。</p>
+</li>
+<li><p>动态链接基本信息：</p>
+<ul>
+<li>链接名：动态链接的名称。</li>
+<li>链接地址：应用程序会打开链接，并进行相应的处理。链接必须是正确的URL编码，并使用HTTP或HTTPS协议。</li>
+</ul>
+<blockquote>
+<p>如果用户打开链接却未安装应用，可能会提示用户先安装应用。</p>
+</blockquote>
+</li>
+<li><p>动态链接高级选项：</p>
+<ul>
+<li>退路链接：未安装应用时，链接无法指定到应用内，使用退路链接，指定一个应用外的链接地址，如应用的宣传链接。</li>
+<li>自定义URL：应用自定义的URL。</li>
+</ul>
+</li>
+<li><p>代码创建：</p>
+<p>https:// <strong><u>domain</u></strong> /?link= <strong><u>your_link</u></strong> &amp;ibi= <strong><u>bundle_id</u></strong> &amp;ius= <strong><u>url_scheme</u></strong> &amp;ad=1&amp;ifl= <u><strong>fallback_link</strong></u> &amp;at= <strong><u>affiliate_token</u></strong> &amp;ct= <strong><u>campaign_text</u></strong></p>
+<ul>
+<li>domain：在Firebase控制中心获取。例如：app_code.app.goo.gl。</li>
+<li>link：应用程序会打开链接，并进行相应的处理。链接必须是正确的URL编码，并使用HTTP或HTTPS协议。</li>
+<li>ibi：iOS的Bundle ID。</li>
+<li>ius：可选。用户自定义URL，</li>
+<li>ad：声明动态链接在广告中使用。如果在广告中使用动态链接，此参数必须设置为1。</li>
+<li>isi：可选。用户未安装应用时，用户链接到App Store。</li>
+<li>ifl：可选。用户未安装应用时，指定一个应用外的地址，如应用宣传页面。</li>
+<li>ipbi：可选。iOS应用适用于iPad时，iPad的Bundle ID。</li>
+<li>ipfl：可选。用户未安装应用时，在iPad指定一个应用外的地址，如应用宣传页面。</li>
+<li>utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid：可选。用户<a href="https://support.google.com/analytics/answer/1033863" target="_blank" rel="external">自定义活动</a>参数，这些参数会被传递到App Store。</li>
+<li>at, ct, mt, pt：可选。<a href="https://www.apple.com/itunes/affiliates/resources/documentation/basic_affiliate_link_guidelines_for_the_phg_network.html" target="_blank" rel="external">App Store 成员链接</a>参数，这些参数会被传递到App Store。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//example.app.goo.gl/?link=https://www.example.com/someresource&amp;ibi=com.example.App&amp;isi=1234567&amp;ad=1</span></span><br></pre></td></tr></table></figure>
+<p>创建跨平台链接，需要同时使用Android和iOS的参数。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//example.app.goo.gl/?link=https://www.example.com/someresource&amp;apn=com.example.android&amp;amv=3&amp;al=exampleapp://someresource&amp;ibi=com.example.ios&amp;isi=1234567&amp;ius=exampleapp</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+</li>
+</ol>
+<h2 id="u5BA2_u6237_u7AEF_u6253_u5F00_u52A8_u6001_u94FE_u63A5"><a href="#u5BA2_u6237_u7AEF_u6253_u5F00_u52A8_u6001_u94FE_u63A5" class="headerlink" title="客户端打开动态链接"></a>客户端打开动态链接</h2><ol>
+<li><p>在项目<code>Targets</code> &gt; <code>Info</code> &gt; <code>URL Types</code>里添加自定义URL。</p>
+</li>
+<li><p>在项目<code>Targets</code> &gt; <code>Capabilities</code> 里，开启<code>Associated Domains</code>。并添加Firebase控制中心的<code>domain</code>。如：applinks:app_code.app.goo.gl。</p>
+</li>
+<li><p>在<code>AppDelegate.h</code>中添加代码如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@import Firebase;</span><br><span class="line">- (BOOL)application:(UIApplication *)application</span><br><span class="line">    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">      </span><br><span class="line">  <span class="comment">// 设置自定义URL</span></span><br><span class="line">  [FIROptions defaultOptions].deepLinkURLScheme = CUSTOM_URL_SCHEME;</span><br><span class="line">  [FIRApp configure];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>application:openURL:sourceApplication:annotation:</code> (iOS 8及以上) and <code>application:openURL:options:</code> (iOS 9及以上)方法里, 通过自定义URL处理深度链接。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)app</span><br><span class="line">            openURL:(NSURL *)url</span><br><span class="line">            options:(NSDictionary&lt;NSString *, id&gt; *)options &#123;</span><br><span class="line">  <span class="keyword">return</span> [self application:app openURL:url sourceApplication:nil annotation:@&#123;&#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)application:(UIApplication *)application</span><br><span class="line">            openURL:(NSURL *)url</span><br><span class="line">  sourceApplication:(NSString *)sourceApplication</span><br><span class="line">         annotation:(id)annotation &#123;</span><br><span class="line">  FIRDynamicLink *dynamicLink =</span><br><span class="line">  [[FIRDynamicLinks dynamicLinks] dynamicLinkFromCustomSchemeURL:url];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (dynamicLink) &#123;</span><br><span class="line">    <span class="comment">// 处理深度链接，如显示深度链接的内容等。</span></span><br><span class="line">    <span class="keyword">return</span> YES;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>在 <code>application:continueUserActivity:restorationHandler:</code>方法里，接收链接作为通用链接进行处理(iOS9及以上)。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application</span><br><span class="line">continueUserActivity:(NSUserActivity *)userActivity</span><br><span class="line"> restorationHandler:(<span class="keyword">void</span> (^)(NSArray *))restorationHandler &#123;</span><br><span class="line"></span><br><span class="line">  BOOL handled = [[FIRDynamicLinks dynamicLinks]</span><br><span class="line">             handleUniversalLink:userActivity.webpageURL</span><br><span class="line">             completion:^(FIRDynamicLink * _Nullable dynamicLink,</span><br><span class="line">                          NSError * _Nullable error) &#123;</span><br><span class="line">               <span class="comment">// ...</span></span><br><span class="line">             &#125;];</span><br><span class="line">    <span class="keyword">return</span> handled;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/12/Cloud Message(云消息)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Google Firebase Cloud Message(云消息)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Google Firebase Dynamic Links(动态链接)" data-title="Google Firebase Dynamic Links(动态链接)" data-url="http://starjang.github.io/2016/06/14/Google Firebase Dynamic Links(动态链接)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"starjang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Listen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
