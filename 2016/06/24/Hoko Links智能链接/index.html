@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://support.hokolinks.com/assets/images/push-notification-use-case.png">
 <meta property="og:image" content="http://support.hokolinks.com/assets/images/hoko-smart-link.png">
 <meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/hoko-blog/one_click_login_diagram.png">
-<meta property="og:updated_time" content="2016-06-24T07:08:03.000Z">
+<meta property="og:updated_time" content="2016-06-24T07:10:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hoko Links(智能链接)">
 <meta name="twitter:description" content="简介Hoko Links是一种跨平台的，动态改变链接行为的智能链接。
@@ -269,6 +269,7 @@
 </li>
 </ol>
 <p><br></p>
+ <a id="more"></a>
 <h2 id="SDK_u4F7F_u7528"><a href="#SDK_u4F7F_u7528" class="headerlink" title="SDK使用"></a>SDK使用</h2><ol>
 <li><p><code>AppDelegate</code>中，在 <code>applicationDidFinishLaunching</code>中添加代码，如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import &lt;Hoko/Hoko.h&gt;</span></span><br><span class="line"></span><br><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">  </span><br><span class="line">    [Hoko setupWithToken:@<span class="string">"YOUR-APP-TOKEN"</span>];</span><br><span class="line">    </span><br><span class="line">  	<span class="keyword">return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
