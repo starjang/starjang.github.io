@@ -22,7 +22,7 @@
 点击服务 &amp;gt; EC2  &amp;gt; 实例  &amp;gt; 启动实例，选择符合免费条件的Ubuntu-64位操作系统，创建新密钥对，输入名称，点击下载并保存好，
 设置安全组，默认SSH端口，新增一个TCP端口65000。启动实例。
 在网络与安全中，选择弹性IP，创建一个弹性IP，并关联">
-<meta property="og:updated_time" content="2016-06-25T06:23:50.000Z">
+<meta property="og:updated_time" content="2016-06-25T06:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS搭建VPN服务器">
 <meta name="twitter:description" content="准备
@@ -295,6 +295,12 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
 <p>重启服务</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/pptpd restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="u5907_u6CE8"><a href="#u5907_u6CE8" class="headerlink" title="备注"></a>备注</h2><ol>
+<li><p>使用账号密码登录AWS</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root #输入2次密码给root用户设定密码</span><br><span class="line">su -</span><br><span class="line">passwd ubuntu #输入两次密码给ec2-user用户设定密码</span><br><span class="line">sed -ri 's/^#?(PasswordAuthentication)\s+(yes|no)/\1 yes/' /etc/ssh/sshd_config</span><br><span class="line">sed -ri 's/^#?(PermitRootLogin)\s+(yes|no)/\1 yes/' /etc/ssh/sshd_config #修改配置文件</span><br><span class="line">sed -ri 's/^/#/;s/sleep 10"\s+/&amp;\n/' /root/.ssh/authorized_keys</span><br><span class="line">service sshd restart</span><br><span class="line">touch /root/.Xauthority</span><br></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 </ol>
 
