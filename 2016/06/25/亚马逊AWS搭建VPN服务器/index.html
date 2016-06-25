@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>AWS搭建VPN服务器 | Listen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="准备
+开通Amazon AWS服务。
+账号注册完成后，进入AWS管理控制台，右上角选择地区，推荐亚太地区(东京)。
+点击服务 &amp;gt; EC2  &amp;gt; 实例  &amp;gt; 启动实例，选择符合免费条件的Ubuntu-64位操作系统，创建新密钥对，输入名称，点击下载并保存好，
+设置安全组，默认SSH端口，新增一个TCP端口65000。启动实例。
+在网络与安全中，选择弹性IP，创建一个弹性IP，并关联">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS搭建VPN服务器">
+<meta property="og:url" content="http://starjang.github.io/2016/06/25/亚马逊AWS搭建VPN服务器/index.html">
+<meta property="og:site_name" content="Listen">
+<meta property="og:description" content="准备
+开通Amazon AWS服务。
+账号注册完成后，进入AWS管理控制台，右上角选择地区，推荐亚太地区(东京)。
+点击服务 &amp;gt; EC2  &amp;gt; 实例  &amp;gt; 启动实例，选择符合免费条件的Ubuntu-64位操作系统，创建新密钥对，输入名称，点击下载并保存好，
+设置安全组，默认SSH端口，新增一个TCP端口65000。启动实例。
+在网络与安全中，选择弹性IP，创建一个弹性IP，并关联">
+<meta property="og:updated_time" content="2016-06-25T06:23:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AWS搭建VPN服务器">
+<meta name="twitter:description" content="准备
+开通Amazon AWS服务。
+账号注册完成后，进入AWS管理控制台，右上角选择地区，推荐亚太地区(东京)。
+点击服务 &amp;gt; EC2  &amp;gt; 实例  &amp;gt; 启动实例，选择符合免费条件的Ubuntu-64位操作系统，创建新密钥对，输入名称，点击下载并保存好，
+设置安全组，默认SSH端口，新增一个TCP端口65000。启动实例。
+在网络与安全中，选择弹性IP，创建一个弹性IP，并关联">
+  
+    <link rel="alternative" href="/atom.xml" title="Listen" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Listen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/Braintree/" style="font-size: 10px;">Braintree</a> <a href="/tags/Cloud-Message/" style="font-size: 10px;">Cloud Message</a> <a href="/tags/Deep-Links/" style="font-size: 10px;">Deep Links</a> <a href="/tags/Dynamic-Links/" style="font-size: 10px;">Dynamic Links</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Firebase/" style="font-size: 15px;">Firebase</a> <a href="/tags/Flurry-Analytics/" style="font-size: 10px;">Flurry Analytics</a> <a href="/tags/Google/" style="font-size: 17.5px;">Google</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hoko/" style="font-size: 10px;">Hoko</a> <a href="/tags/Notification/" style="font-size: 10px;">Notification</a> <a href="/tags/S3/" style="font-size: 10px;">S3</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Twitter/" style="font-size: 10px;">Twitter</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/pptp/" style="font-size: 10px;">pptp</a> <a href="/tags/云存储/" style="font-size: 10px;">云存储</a> <a href="/tags/云消息/" style="font-size: 10px;">云消息</a> <a href="/tags/亚马逊/" style="font-size: 12.5px;">亚马逊</a> <a href="/tags/动态链接/" style="font-size: 12.5px;">动态链接</a> <a href="/tags/双向认证/" style="font-size: 10px;">双向认证</a> <a href="/tags/境外支付/" style="font-size: 10px;">境外支付</a> <a href="/tags/应用统计/" style="font-size: 10px;">应用统计</a> <a href="/tags/推送通知/" style="font-size: 10px;">推送通知</a> <a href="/tags/智能链接/" style="font-size: 10px;">智能链接</a> <a href="/tags/深度链接/" style="font-size: 10px;">深度链接</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/第三方登录/" style="font-size: 10px;">第三方登录</a> <a href="/tags/统计/" style="font-size: 10px;">统计</a> <a href="/tags/自签证书/" style="font-size: 10px;">自签证书</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">现职iOS软件开发，对科技充满兴趣。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Listen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/default_avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Listen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记忆，流年，始于笔尖，盛于心田。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/starjang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/starzhang" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-亚马逊AWS搭建VPN服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/25/亚马逊AWS搭建VPN服务器/" class="article-date">
+  	<time datetime="2016-06-25T05:50:09.000Z" itemprop="datePublished">2016-06-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AWS搭建VPN服务器
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EC2/">EC2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shadowsocks/">Shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPN/">VPN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pptp/">pptp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/亚马逊/">亚马逊</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/科学上网/">科学上网</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u51C6_u5907"><a href="#u51C6_u5907" class="headerlink" title="准备"></a>准备</h2><ol>
+<li>开通<a href="http://aws.amazon.com" target="_blank" rel="external">Amazon AWS服务</a>。</li>
+<li>账号注册完成后，进入<code>AWS管理控制台</code>，右上角选择地区，推荐<code>亚太地区(东京)</code>。</li>
+<li>点击<code>服务</code> &gt; <code>EC2</code>  &gt; <code>实例</code>  &gt; <code>启动实例</code>，选择符合免费条件的<code>Ubuntu-64位操作系统</code>，创建新密钥对，输入名称，点击下载并保存好，</li>
+<li>设置<code>安全组</code>，默认SSH端口，新增一个TCP端口65000。启动实例。</li>
+<li>在<code>网络与安全</code>中，选择<code>弹性IP</code>，创建一个弹性IP，并关联在正在运行的实例中。弹性IP必须关联在一个运行的实例中，不然15分钟后会计时收费。可免费申请一个。</li>
+</ol>
+<a id="more"></a>
+<h2 id="u642D_u5EFAShadowsocks_u670D_u52A1"><a href="#u642D_u5EFAShadowsocks_u670D_u52A1" class="headerlink" title="搭建Shadowsocks服务"></a>搭建Shadowsocks服务</h2><h3 id="u670D_u52A1_u7AEF_u914D_u7F6E"><a href="#u670D_u52A1_u7AEF_u914D_u7F6E" class="headerlink" title="服务端配置"></a>服务端配置</h3><ol>
+<li><p>获取root权限</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新apt-get</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装python包管理工具</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-pip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在shadowsocks路径下创建配置文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/lib/python2<span class="number">.7</span>/dist-packages/shadowsocks/config.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件内容</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单一端口配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"server_port"</span>:<span class="number">65000</span>,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">"连接密码"</span>,</span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>:<span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多端口配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"port_password"</span>: &#123;</span><br><span class="line">        <span class="string">"端口1"</span>: <span class="string">"连接密码1"</span>,</span><br><span class="line">        <span class="string">"端口2"</span> : <span class="string">"连接密码2"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>若提示无文件写入权限在当前目录下，使用命令</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod <span class="number">777</span> *.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /usr/local/lib/python2<span class="number">.7</span>/dist-packages/shadowsocks/config.json -d start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加开机自动启动</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rc.local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在尾exit 0前加入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/bin/ssserver -c /usr/local/lib/python2<span class="number">.7</span>/dist-packages/shadowsocks/config.json</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<h3 id="u5BA2_u6237_u7AEF_u914D_u7F6E"><a href="#u5BA2_u6237_u7AEF_u914D_u7F6E" class="headerlink" title="客户端配置"></a>客户端配置</h3><ol>
+<li>客户端<a href="https://shadowsocks.com/client.html" target="_blank" rel="external">下载页面</a>。</li>
+<li>配置客户端<ul>
+<li>地址：弹性IP地址</li>
+<li>密码：设置的密码</li>
+<li>加密：aes-256-cfb</li>
+</ul>
+</li>
+</ol>
+<h2 id="u642D_u5EFAPPTP_u670D_u52A1"><a href="#u642D_u5EFAPPTP_u670D_u52A1" class="headerlink" title="搭建PPTP服务"></a>搭建PPTP服务</h2><ol>
+<li><p>连接实例。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">400</span> xxxx.pem</span><br><span class="line">ssh -i xxxx.pem ubuntu@xx.xx.xx.xx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装PPTP VPN</p>
+<p>设置密码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd</span><br></pre></td></tr></table></figure>
+<p>安装pptpd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install pptpd</span><br></pre></td></tr></table></figure>
+<p>修改/etc/ppp/pptpd-options，添加如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localip <span class="number">192.168</span><span class="number">.10</span><span class="number">.1</span> </span><br><span class="line">remoteip <span class="number">192.168</span><span class="number">.10</span><span class="number">.11</span>-<span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>修改/etc/ppp/options.pptpd， 加入Google的DNS</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ms-dns <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span> </span><br><span class="line">ms-dns <span class="number">8.8</span><span class="number">.4</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
+<p>修改/etc/ppp/chap-secrets，按照以下格式配置VPN用户名和密码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name pptpd passwd *</span><br></pre></td></tr></table></figure>
+<p>修改/etc/sysctl.conf，添加以下内容</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_forward=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/sysctl -p</span><br></pre></td></tr></table></figure>
+<p>启动iptables的NAT configuration</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>每次重启EC2启动NAT configuration，修改/etc/rc.local, 在exit 0上加入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>重启服务</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/pptpd restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/24/Hoko Links智能链接/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hoko Links(智能链接)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="亚马逊AWS搭建VPN服务器" data-title="AWS搭建VPN服务器" data-url="http://starjang.github.io/2016/06/25/亚马逊AWS搭建VPN服务器/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"starjang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Listen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
